@@ -10,13 +10,16 @@ import java.util.*;
 public class Transaction {
 	
 	/**
-	 * Constructor predeterminado, establece el monto en 0, y la fecha actual
+	 * Constructor predeterminado, inicializa el monto en 0, y la fecha actual
 	 * */
 	public Transaction() {
 		this.amount = 0;
 		this.date = new Date();
 	}
 	
+	/**
+	 * Constructor, inicializa el monto con la cantidad ingresada y la fecha actual
+	 * */
 	public Transaction(int amount) {
 		this.amount = amount;
 		this.date = new Date();

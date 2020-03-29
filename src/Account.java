@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Clase que modela una cuenta bancaria, guarda el saldo de la cuenta su numero de cuenta y el tipo de cuenta que es
  * (cuenta rut o cuenta de ahorros).
@@ -11,12 +13,16 @@ public class Account {
 	public static void main(String args[]) {
 		Account account = new Account();
 
+		account.transferTo(50_000, "11825177-1");
+		
+		for(int i = 0; i < 20; i++)
+		{
+			account.depositTo(100_000, "20360262-1");
+		}
+		
+		account.transferTo(50_000, "11825177-1");
+		
 		account.showInfo();
-
-		if(account.getTypeAccount() == TypeAccount.RUT_ACCOUNT)
-			System.out.println("RUT_ACCOUNT");
-		else
-			System.out.println("SAVING_ACCOUNT");
 
 	}
 
@@ -24,8 +30,7 @@ public class Account {
 	* Contructor por defecto, inicializa el saldo en 0 y el numero de cuenta en "00000000-0"
 	*/
 	public Account() {
-		this.balance = 0;
-		this.accountNumber = "00000000-0";
+		this("00000000-0");
 	}
 
 	/**
@@ -36,6 +41,7 @@ public class Account {
 	public Account(int initialBalance, String newAccountNumber) {
 		setBalance(initialBalance);
 		this.accountNumber = newAccountNumber;
+		this.history = new ArrayList<Transaction>();
 	}
 
 	/**
@@ -45,8 +51,41 @@ public class Account {
 	public Account(String newAccountNumber) {
 		this.balance = 0;
 		this.accountNumber = newAccountNumber;
+		this.history = new ArrayList<Transaction>();
 	}
 
+	/**
+	 * Suma la cantidad "amount" al saldo, guardando la cuenta de origen: "accountNumber"
+	 * @param amount cantidad a depositar
+	 * @param accountNumber numero de cuenta que realizo el deposito 
+	 * */
+	public void depositTo(int amount, String accountNumber) {
+		setBalance(amount + getBalance());
+		addTransaction(amount, accountNumber);
+	}
+	
+	/**
+	 * Resta la cantidad "amount" del saldo, guardando la cuenta destino "accountNumber"
+	 * @param amount cantidad a transferir
+	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
+	 * */
+	public void transferTo(int amount, String accountNumber) {
+		setBalance(getBalance() - amount);
+		addTransaction(-amount, accountNumber);
+	}
+	
+	/**
+	 * Añade una nueva transaccion al historial de movimientos
+	 * @param amount monto relacionado con la transaccion
+	 * @param cuenta asociada a la transaccion
+	 * */
+	public void addTransaction(int amount, String accountNumber) {
+		if(this.history.size() >= 20)
+			this.history.remove(0);
+		
+		this.history.add(new Transaction(amount, accountNumber));
+	}
+	
 	/**
 	* @return saldo actual de la cuenta
 	*/
@@ -97,11 +136,22 @@ public class Account {
 
 	public void showInfo() {
 		System.out.println("Saldo: $" + getBalance() + "\nNumero de cuenta: " + getAccountNumber());
+		
+		int numTransaction = 1;
+		
+		for(Transaction transaction : this.history) {
+			System.out.print(numTransaction + ") Monto: " + transaction.getAmount());
+			System.out.print(" - Cuenta: " + transaction.getAddressee().getAccountNumber());
+			System.out.println(" - Fecha: " + transaction.getDate().toString());
+			
+			numTransaction++;
+		}
 	}
 
 	//Atributos
 	private int balance;
 	private String accountNumber;
+	private ArrayList<Transaction> history;
 }
 
 enum TypeAccount {

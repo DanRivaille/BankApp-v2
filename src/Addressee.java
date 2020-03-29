@@ -11,7 +11,7 @@ public class Addressee {
 	 * Constructor predeterminado, establece los valores por defecto de los atributos
 	 * */
 	public Addressee() {
-		this("00000000-0");
+		this("00000000-0");			//llama al constructor de abajo con el valor por defecto del nunmero de cuenta
 	}
 	
 	/**

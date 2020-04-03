@@ -1,8 +1,8 @@
-import java.util.*;
+import java.util.Date;
 
 /**
  * Clase que modela la informacion de una transaccion bancaria.
- * Nota: un monto negativa representa un cargo a la cuenta, mientras que una positiva
+ * Nota: un monto negativo representa un cargo a la cuenta, mientras que un positivo
  * representa un abono
  * 
  * @author DanSantos
@@ -23,7 +23,7 @@ public class Transaction {
 	 * @param amount monto asociado a la transaccion realizada
 	 * */
 	public Transaction(int amount) {
-		this.amount = amount;
+		setAmount(amount);
 		this.date = new Date();
 		this.asociatedAccount = new Addressee();
 	}
@@ -34,7 +34,8 @@ public class Transaction {
 	 * @param accountNumber numero de la cuenta asociada a la transaccion
 	 * */
 	public Transaction(int amount, String accountNumber) {
-		this(amount);
+		setAmount(amount);
+		this.date = new Date();
 		this.asociatedAccount = new Addressee(accountNumber);
 	}
 	

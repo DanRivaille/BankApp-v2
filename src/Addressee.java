@@ -26,8 +26,8 @@ public class Addressee {
 	
 	/**
 	 * Constructor que establece todos los atributos de la clase con los parametros ingresados
-	 * @param name nombre del destinatario
 	 * @param accountNumber numero de cuenta del destinatario, se asume que ha sido validado
+	 * @param name nombre del destinatario
 	 * @param isFavorite indica si el destinatario esta guardado como favorito o no
 	 * */
 	public Addressee(String accountNumber, String name, boolean isFavorite) {
@@ -65,7 +65,7 @@ public class Addressee {
 	}
 	
 	/**
-	 * @param name establece un nuevo nombre al destinatario
+	 * @param newName establece un nuevo nombre al destinatario
 	 * */
 	public void setName(String newName) {
 		this.name = newName;

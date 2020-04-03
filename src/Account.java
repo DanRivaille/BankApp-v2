@@ -12,15 +12,15 @@ public class Account {
 
 	public static void main(String args[]) {
 		Account account = new Account();
-
-		account.transferTo(50_000, "11825177-1");
+		account.setBalance(150_000);
+		account.setAccountNumber("00002734-1");
 		
 		for(int i = 0; i < 20; i++)
 		{
-			account.depositTo(100_000, "20360262-1");
+			account.depositFrom(100_000, "20360262-1");
 		}
 		
-		account.transferTo(50_000, "11825177-1");
+		account.transferTo(50_000, "12523115-1");
 		
 		account.showInfo();
 
@@ -30,18 +30,7 @@ public class Account {
 	* Contructor por defecto, inicializa el saldo en 0 y el numero de cuenta en "00000000-0"
 	*/
 	public Account() {
-		this("00000000-0");
-	}
-
-	/**
-	* Constructor, establece todos los atributos de la clase con los parametros entregados, valida el saldo
-	* @param initialBalance saldo inicial que tendra la cuenta
-	* @param newAccountNumber numero de cuenta, se asume que se haya validado
-	*/
-	public Account(int initialBalance, String newAccountNumber) {
-		setBalance(initialBalance);
-		this.accountNumber = newAccountNumber;
-		this.history = new ArrayList<Transaction>();
+		this("00000000-0");			//llama al constructor da abajo con un numero de cuenta por defecto
 	}
 
 	/**
@@ -53,13 +42,24 @@ public class Account {
 		this.accountNumber = newAccountNumber;
 		this.history = new ArrayList<Transaction>();
 	}
-
+	
+	/**
+	* Constructor, establece todos los atributos de la clase con los parametros entregados, valida el saldo
+	* @param initialBalance saldo inicial que tendra la cuenta
+	* @param newAccountNumber numero de cuenta, se asume que se haya validado
+	*/
+	public Account(int initialBalance, String newAccountNumber) {
+		setBalance(initialBalance);
+		this.accountNumber = newAccountNumber;
+		this.history = new ArrayList<Transaction>();
+	}
+	
 	/**
 	 * Suma la cantidad "amount" al saldo, guardando la cuenta de origen: "accountNumber"
 	 * @param amount cantidad a depositar
 	 * @param accountNumber numero de cuenta que realizo el deposito 
 	 * */
-	public void depositTo(int amount, String accountNumber) {
+	public void depositFrom(int amount, String accountNumber) {
 		setBalance(amount + getBalance());
 		addTransaction(amount, accountNumber);
 	}
@@ -75,9 +75,9 @@ public class Account {
 	}
 	
 	/**
-	 * Añade una nueva transaccion al historial de movimientos
+	 * Añade una nueva transaccion al historial de movimientos, si alcanzo el maximo se elimina la mas antigua
 	 * @param amount monto relacionado con la transaccion
-	 * @param cuenta asociada a la transaccion
+	 * @param accountNumber asociada a la transaccion
 	 * */
 	public void addTransaction(int amount, String accountNumber) {
 		if(this.history.size() >= 20)
@@ -109,8 +109,8 @@ public class Account {
 	}
 
 	/**
-	* Metodo estatico de clase. 
-	* Obtiene el tipo de cuenta de la cuenta ingresada, se asume que ya se ha validado.
+	* Metodo estatico de clase. Obtiene el tipo de cuenta de la cuenta ingresada, 
+	* se asume que ya se ha validado.
 	* @param accountNumber numero de cuenta de la que se desea saber el tipo de cuenta
 	* @return tipo de cuenta de la cuenta ingresada como parametro
 	*/
@@ -133,7 +133,18 @@ public class Account {
 
 		this.balance = newBalance;
 	}
+	
+	/**
+	 * Establece el numero de cuenta, asume que sea valido
+	 * @param newAccountNumber nuevo numero de cuenta.
+	 * */
+	public void setAccountNumber(String newAccountNumber) {
+		this.accountNumber = newAccountNumber;
+	}
 
+	/**
+	 * Muestra la informacion general de la cuenta por consola
+	 * */
 	public void showInfo() {
 		System.out.println("Saldo: $" + getBalance() + "\nNumero de cuenta: " + getAccountNumber());
 		

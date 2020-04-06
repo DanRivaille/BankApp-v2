@@ -10,22 +10,6 @@ import java.util.ArrayList;
 
 public class Account {
 
-	public static void main(String args[]) {
-		Account account = new Account();
-		account.setBalance(150_000);
-		account.setAccountNumber("00002734-1");
-		
-		for(int i = 0; i < 20; i++)
-		{
-			account.depositFrom(100_000, "20360262-1");
-		}
-		
-		account.transferTo(50_000, "12523115-1");
-		
-		account.showInfo();
-
-	}
-
 	/**
 	* Contructor por defecto, inicializa el saldo en 0 y el numero de cuenta en "00000000-0"
 	*/

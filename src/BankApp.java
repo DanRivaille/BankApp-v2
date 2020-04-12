@@ -1,6 +1,8 @@
 import java.util.HashMap;
 
-import model.Account;
+import java.util.ArrayList;
+
+import model.*;
 
 /**
  * Clase principal de la aplicacion
@@ -12,29 +14,33 @@ import model.Account;
 public class BankApp {
 
 	public static void main(String args[]) {
-		BankApp bankApp = new BankApp();
+		Client client = new Client("Dan Santos", "20360262-2");
 		
-		bankApp.addAccount("16211031-2");
-		bankApp.addAccount(150_000, "12010421-2");
-		bankApp.addAccount(50_000, "20410221-1");
-		bankApp.addAccount(100_000, "16021002-2");
+		client.addAddressee(new Addressee("23404121-3", "Contador", false));
+		client.addAddressee(new Addressee("13404345-3", "Mensualidad", false));
+		client.addAddressee(new Addressee("19202175-5", "Dentista", true));
+		client.addAddressee(new Addressee("20313773-1", "Universidad", true));
 		
-		Account account1 = bankApp.getAccount("20360262-1");
-		Account account2 = bankApp.getAccount("12010421-2");
-		
-		account2.transferTo(50_000, "20360262-1");
-		account1.depositFrom(50_000, "12010421-2");
-		
-		account1.showInfo();
-		account2.showInfo();
-
+		ArrayList<Addressee> list = client.getAddressees();
+		for(Addressee addressee : list) {
+			System.out.println("Nombre: " + addressee.getName() + " - N.Cuenta: " + addressee.getAccountNumber());
+		}
 	}
 	
 	/**
 	 * Constructor prederminado de la clase, instancia los atributos objeto.
 	 * */
 	public BankApp() {
+		this(new Client());
+	}
+	
+	/**
+	 * Constructor que establece el cliente e instancia los demas atributos objeto.
+	 * @param cliente cliente inicial.
+	 * */
+	public BankApp(Client client) {
 		this.accounts = new HashMap<String, Account>();
+		this.client = client;
 	}
 	
 	/**
@@ -70,6 +76,22 @@ public class BankApp {
 		return this.accounts.containsKey(accountNumber);
 	}
 	
+	/**
+	 * @return instancia del objeto cliente actual.
+	 * */
+	public Client getClient() {
+		return this.client;
+	}
+	
+	/**
+	 * Establece un nuevo cliente.
+	 * @param newCliente nuevo cliente.
+	 * */
+	public void setCliente(Client newClient) {
+		this.client = newClient;
+	}
+	
 	//Atributos
 	private HashMap <String, Account> accounts;
+	private Client client;
 }

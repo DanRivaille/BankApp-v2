@@ -1,3 +1,4 @@
+package model;
 /**
  * Clase que modelara la informacion de un destinatario
  * 

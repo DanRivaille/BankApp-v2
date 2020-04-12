@@ -1,5 +1,7 @@
 import java.util.HashMap;
 
+import model.Account;
+
 /**
  * Clase principal de la aplicacion
  * 

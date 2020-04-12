@@ -1,3 +1,4 @@
+package model;
 import java.util.ArrayList;
 
 /**
@@ -147,8 +148,4 @@ public class Account {
 	private int balance;
 	private String accountNumber;
 	private ArrayList<Transaction> history;
-}
-
-enum TypeAccount {
-	RUT_ACCOUNT, SAVING_ACCOUNT, NO_VALID
 }

@@ -66,7 +66,7 @@ public class BankApp {
 	 * Comprueba que exista una cuenta guardada asociada al numero de cuenta ingresado.
 	 * @return true si esta guardada la cuenta, false en caso contrario.
 	 * */
-	public boolean existAccount(String accountNumber) {
+	public boolean existsAccount(String accountNumber) {
 		return this.accounts.containsKey(accountNumber);
 	}
 	

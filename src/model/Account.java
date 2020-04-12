@@ -1,5 +1,6 @@
 package model;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Clase que modela una cuenta bancaria, guarda el saldo de la cuenta su numero de cuenta y el tipo de cuenta que es
@@ -25,7 +26,7 @@ public class Account {
 	public Account(String newAccountNumber) {
 		this.balance = 0;
 		this.accountNumber = newAccountNumber;
-		this.history = new ArrayList<Transaction>();
+		this.history = new LinkedList<Transaction>();
 	}
 	
 	/**
@@ -36,7 +37,7 @@ public class Account {
 	public Account(int initialBalance, String newAccountNumber) {
 		setBalance(initialBalance);
 		this.accountNumber = newAccountNumber;
-		this.history = new ArrayList<Transaction>();
+		this.history = new LinkedList<Transaction>();
 	}
 	
 	/**
@@ -107,6 +108,14 @@ public class Account {
 			default  : return TypeAccount.NO_VALID;
 		}
 	}
+	
+	/**
+	 * Obtiene una interador de la lista del historial de transacciones.
+	 * @return iterador del historial de transacciones.
+	 * */
+	public ListIterator<Transaction> getHistory() {
+		 return this.history.listIterator();
+	}
 
 	/**
 	* Establece el saldo de la cuenta, realiza una validacion de que el nuevo saldo no sea negativo
@@ -147,5 +156,5 @@ public class Account {
 	//Atributos
 	private int balance;
 	private String accountNumber;
-	private ArrayList<Transaction> history;
+	private LinkedList<Transaction> history;
 }

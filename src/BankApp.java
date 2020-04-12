@@ -48,7 +48,7 @@ public class BankApp {
 	 * @param accountNumber numero  de la nueva cuenta a ingresar.
 	 * */
 	public void addAccount(String accountNumber) {
-		this.accounts.put(accountNumber, new Account(accountNumber));
+		addAccount(0, accountNumber);
 	}
 	
 	/**
@@ -58,14 +58,17 @@ public class BankApp {
 	 * @param accountNumber numero de la nueva cuenta a ingresar.
 	 * */
 	public void addAccount(int balance, String accountNumber) {
-		this.accounts.put(accountNumber, new Account(balance, accountNumber));
+		if(!this.accounts.containsKey(accountNumber))
+			this.accounts.put(accountNumber, new Account(balance, accountNumber));
 	}
 	
 	/**
-	 * @return cuenta asociada al numero de cuenta ingresado
+	 * Agrega la cuenta ingresada al mapa de cuentas
+	 * @param account nueva cuenta a ingresar al mapa
 	 * */
-	public Account getAccount(String accountNumber) {
-		return this.accounts.get(accountNumber);
+	public void addAccount(Account account) {
+		if(!this.accounts.containsKey(account.getAccountNumber()))
+			this.accounts.put(account.getAccountNumber(), account);
 	}
 	
 	/**

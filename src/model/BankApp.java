@@ -1,4 +1,6 @@
 package model;
+import view.*;
+import controller.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -12,17 +14,22 @@ import java.util.ArrayList;
 public class BankApp {
 
 	public static void main(String args[]) {
+		BankApp bank = new BankApp();
+		ControllerTUI controllerTUI = new ControllerTUI(bank);
+		ViewTUI viewTUI = new ViewTUI();
+		
+		controllerTUI.setView(viewTUI);
+		viewTUI.setController(controllerTUI);
+		
 		Client client = new Client("Dan Santos", "20360262-2");
+		bank.setClient(client);
 		
 		client.addAddressee(new Addressee("23404121-3", "Contador", false));
 		client.addAddressee(new Addressee("13404345-3", "Mensualidad", false));
 		client.addAddressee(new Addressee("19202175-5", "Dentista", true));
 		client.addAddressee(new Addressee("20313773-1", "Universidad", true));
 		
-		ArrayList<Addressee> list = client.getAddressees();
-		for(Addressee addressee : list) {
-			System.out.println("Nombre: " + addressee.getName() + " - N.Cuenta: " + addressee.getAccountNumber());
-		}
+		viewTUI.mainMenu();
 	}
 	
 	/**
@@ -88,7 +95,7 @@ public class BankApp {
 	 * Establece un nuevo cliente.
 	 * @param newCliente nuevo cliente.
 	 * */
-	public void setCliente(Client newClient) {
+	public void setClient(Client newClient) {
 		this.client = newClient;
 	}
 	

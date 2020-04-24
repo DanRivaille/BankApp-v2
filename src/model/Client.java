@@ -94,8 +94,7 @@ public class Client {
 		
 		Iterator<String> iterator = this.addressees.keySet().iterator();	//se obtiene un iterador para el Set de claves del mapa
 		
-		while(iterator.hasNext())											//se recorren las claves del mapa
-		{
+		while(iterator.hasNext()) {											//se recorren las claves del mapa
 			String accountNumber = iterator.next();								//se obtiene la clave (numero de cuenta)
 			list.add(this.addressees.get(accountNumber));						//se guarda en la lista en destinatario asociado
 		}

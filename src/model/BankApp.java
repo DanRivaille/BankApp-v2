@@ -1,8 +1,6 @@
+package model;
 import java.util.HashMap;
-
 import java.util.ArrayList;
-
-import model.*;
 
 /**
  * Clase principal de la aplicacion

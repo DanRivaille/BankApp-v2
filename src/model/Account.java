@@ -118,13 +118,10 @@ public class Account {
 	}
 
 	/**
-	* Establece el saldo de la cuenta, realiza una validacion de que el nuevo saldo no sea negativo
+	* Establece el saldo de la cuenta
 	* @param newBalance nuevo saldo de la cuenta
 	*/
 	public void setBalance(int newBalance) {
-		if(balance < 0)
-			newBalance = 0;
-
 		this.balance = newBalance;
 	}
 	

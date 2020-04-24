@@ -2,7 +2,6 @@ package model;
 import view.*;
 import controller.*;
 import java.util.HashMap;
-import java.util.ArrayList;
 
 /**
  * Clase principal de la aplicacion

@@ -2,7 +2,6 @@ package controller;
 import view.*;
 import model.*;
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 public class ControllerTUI {
 
@@ -34,6 +33,10 @@ public class ControllerTUI {
 		this.bank = bank;
 	}
 
+	/**
+	 * Obtiene la informacion del nuevo destinatario a guardar y valida que no exita y en 
+	 * los destinatarios guardados del cliente.
+	 * */
 	public void addAddressee() {
 		String name;
 		String accountNumber;
@@ -49,20 +52,54 @@ public class ControllerTUI {
 		isFavorite = (this.viewTUI.getInput().equals("1")) ? true : false;
 		
 		Client client = this.bank.getClient();
-		if(client.existsAddressee(accountNumber))
+		if(client.existsAddressee(accountNumber)) {
 			this.viewTUI.setOutput("Ya existe un destinatario con el numero de cuenta ingresado\n");
-		else
+		}
+		else {
 			client.addAddressee(new Addressee(accountNumber, name, isFavorite));
+			this.viewTUI.setOutput("Destinatario guardado correctamente\n");
+		}
 	}
 	
 	/**
 	 * Muestra los destinatarios guardados por el cliente.
 	 * */
-	public void showAddressee() {
+	public void showAddressees() {
 		ArrayList<Addressee> addressees = this.bank.getClient().getAddressees();
 		
 		for(Addressee addressee : addressees) {
 			this.viewTUI.setOutput("Nombre: " + addressee.getName() + " - Numero de cuenta: " + addressee.getAccountNumber() + '\n');
+		}
+	}
+	
+	/**
+	 * Muestra los destinatarios guardados como favoritos por el cliente.
+	 * */
+	public void showFavoritesAddressees() {
+		ArrayList<Addressee> addressees = this.bank.getClient().getAddressees();
+		
+		for(Addressee addressee : addressees) {
+			if(addressee.isFavorite())
+				this.viewTUI.setOutput("Nombre: " + addressee.getName() + " - Numero de cuenta: " + addressee.getAccountNumber() + '\n');
+		}
+	}
+	
+	/**
+	 * Obtiene los datos del destinatario a eliminar, valida que exista y lo elimina.
+	 * */
+	public void removeAddressee() {
+		String accountNumber;
+
+		this.viewTUI.setOutput("Numero de cuenta del destinatario a eliminar: ");
+		accountNumber = this.viewTUI.getInput();
+
+		Client client = this.bank.getClient();
+		if(client.existsAddressee(accountNumber)) {
+			client.removeAddressee(accountNumber);
+			this.viewTUI.setOutput("Destinatario eliminado correctamente\n");
+		}
+		else {
+			this.viewTUI.setOutput("No existe un destinatario con el numero de cuenta ingresado\\n");
 		}
 	}
 

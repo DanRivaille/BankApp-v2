@@ -48,10 +48,10 @@ public class ViewTUI {
 			}
 
 			switch(option) {
-				case 1  : System.out.println("Destinatarios favoritos"); break;
-				case 2  : this.controllerTUI.showAddressee(); break;
+				case 1  : this.controllerTUI.showFavoritesAddressees(); break;
+				case 2  : this.controllerTUI.showAddressees(); break;
 				case 3  : this.controllerTUI.addAddressee(); break;
-				case 4  : System.out.println("Eliminar destinario"); break;
+				case 4  : this.controllerTUI.removeAddressee(); break;
 				case 5  : break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente");
 			}

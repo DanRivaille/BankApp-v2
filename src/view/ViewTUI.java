@@ -49,7 +49,7 @@ public class ViewTUI {
 
 			switch(option) {
 				case 1  : System.out.println("Destinatarios favoritos"); break;
-				case 2  : System.out.println("Destinatarios regulares"); break;
+				case 2  : this.controllerTUI.showAddressee(); break;
 				case 3  : this.controllerTUI.addAddressee(); break;
 				case 4  : System.out.println("Eliminar destinario"); break;
 				case 5  : break;

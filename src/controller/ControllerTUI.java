@@ -1,6 +1,8 @@
 package controller;
 import view.*;
 import model.*;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class ControllerTUI {
 
@@ -51,6 +53,17 @@ public class ControllerTUI {
 			this.viewTUI.setOutput("Ya existe un destinatario con el numero de cuenta ingresado\n");
 		else
 			client.addAddressee(new Addressee(accountNumber, name, isFavorite));
+	}
+	
+	/**
+	 * Muestra los destinatarios guardados por el cliente.
+	 * */
+	public void showAddressee() {
+		ArrayList<Addressee> addressees = this.bank.getClient().getAddressees();
+		
+		for(Addressee addressee : addressees) {
+			this.viewTUI.setOutput("Nombre: " + addressee.getName() + " - Numero de cuenta: " + addressee.getAccountNumber() + '\n');
+		}
 	}
 
 	//Atributos

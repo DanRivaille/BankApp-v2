@@ -20,13 +20,15 @@ public class BankApp {
 		controllerTUI.setView(viewTUI);
 		viewTUI.setController(controllerTUI);
 		
-		Client client = new Client("Dan Santos", "20360262-2");
+		Client client = new Client("Dan Santos", "20360262-6");
 		bank.setClient(client);
 		
 		client.addAddressee(new Addressee("23404121-3", "Contador", false));
 		client.addAddressee(new Addressee("13404345-3", "Mensualidad", false));
 		client.addAddressee(new Addressee("19202175-5", "Dentista", true));
 		client.addAddressee(new Addressee("20313773-1", "Universidad", true));
+		
+		bank.addAccount("20360262-1");
 		
 		viewTUI.mainMenu();
 	}
@@ -81,6 +83,13 @@ public class BankApp {
 	 * */
 	public boolean existsAccount(String accountNumber) {
 		return this.accounts.containsKey(accountNumber);
+	}
+	
+	/**
+	 * @return cuenta asociada al numero de cuenta ingreado.
+	 * */
+	public Account getAccount(String accountNumber) {
+		return this.accounts.get(accountNumber);
 	}
 	
 	/**

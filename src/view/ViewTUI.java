@@ -72,7 +72,7 @@ public class ViewTUI {
 			option = readOption();
 
 			switch(option) {
-				case 1  : System.out.println("Transferir"); pause(); break;
+				case 1  : this.controllerTUI.makeTransfer(); pause(); break;
 				case 2  : menuAddressees(); break;
 				case 3  : break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();

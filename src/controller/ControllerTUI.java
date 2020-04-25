@@ -38,7 +38,7 @@ public class ControllerTUI {
 	}
 
 	/**
-	 * Obtiene la informacion del nuevo destinatario a guardar y valida que no exita y en 
+	 * Obtiene la informacion del nuevo destinatario a guardar y valida que no exista y en 
 	 * los destinatarios guardados del cliente.
 	 * */
 	public void addAddressee() {
@@ -114,19 +114,36 @@ public class ControllerTUI {
 	}
 	
 	/**
+	 * Realiza una transferencia de la cuenta origen elegida por el usuario, a la  cuenta destino.
+	 * */
+	public void makeTransfer() {
+		Account originAccount = chooseMyAccount();
+		
+		if(originAccount != null) {
+			Account destinyAccount = chooseDestinyAccount();
+			
+			this.viewTUI.setOutput("Cuenta origen: \n\n");
+			originAccount.showInfo();
+			
+			this.viewTUI.setOutput("\n\nCuenta destino: \n\n");
+			destinyAccount.showInfo();
+		}
+	}
+	
+	/**
 	 * Muestra la cuenta seleccionada por el usuario
 	 * */
 	public void showAccount() {
-		Account account = chooseAccount();
+		Account account = chooseMyAccount();
 
 		if(account != null)
 			account.showInfo();
 	}
 	
 	/**
-	 * El usuario selecciona la cuenta en la que quiere operar
+	 * El usuario selecciona la cuenta propia en la que quiere operar.
 	 * */
-	public Account chooseAccount() {
+	public Account chooseMyAccount() {
 		Client client = this.bank.getClient();
 		Account account;
 		int option;
@@ -149,6 +166,25 @@ public class ControllerTUI {
 			this.viewTUI.setOutput("Opcion ingresada no valida\n");
 			account = null;
 		}
+		
+		return account;
+	}
+	
+	/**
+	 * Obtiene la cuenta seleccionada por el usuario dentro de las cuentas del sistema.
+	 * */
+	public Account chooseDestinyAccount() {
+		String accountNumber;
+		Account account = null;
+		
+		this.viewTUI.setOutput("Ingrese el numero de cuenta: ");
+		accountNumber = this.viewTUI.getInput();
+		
+		if(this.bank.existsAccount(accountNumber))
+			account = this.bank.getAccount(accountNumber);
+		else
+			this.viewTUI.setOutput("No se encontro una cuenta asociado al numero de cuenta ingresado");
+		
 		
 		return account;
 	}

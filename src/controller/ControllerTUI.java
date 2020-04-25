@@ -3,6 +3,10 @@ import view.*;
 import model.*;
 import java.util.ArrayList;
 
+/**
+ * Clase correspondiente al controlador del patron MVC
+ * */
+
 public class ControllerTUI {
 
 	/**
@@ -52,7 +56,10 @@ public class ControllerTUI {
 		isFavorite = (this.viewTUI.getInput().equals("1")) ? true : false;
 		
 		Client client = this.bank.getClient();
-		if(client.existsAddressee(accountNumber)) {
+		if(!Account.isValid(accountNumber)) {
+			this.viewTUI.setOutput("Numero de cuenta ingresado no valido\n");
+		}
+		else if(client.existsAddressee(accountNumber)) {
 			this.viewTUI.setOutput("Ya existe un destinatario con el numero de cuenta ingresado\n");
 		}
 		else {
@@ -94,7 +101,10 @@ public class ControllerTUI {
 		accountNumber = this.viewTUI.getInput();
 
 		Client client = this.bank.getClient();
-		if(client.existsAddressee(accountNumber)) {
+		if(!Account.isValid(accountNumber)) {
+			this.viewTUI.setOutput("Numero de cuenta ingresado no valido\n");
+		}
+		else if(client.existsAddressee(accountNumber)) {
 			client.removeAddressee(accountNumber);
 			this.viewTUI.setOutput("Destinatario eliminado correctamente\n");
 		}

@@ -73,6 +73,35 @@ public class Account {
 	}
 	
 	/**
+	 * Comprueba que el numero de cuenta ingresado es un numero de cuenta valido.
+	 * @param accountNumber numero de cuenta a validar.
+	 * @return true si es un numero de cuenta valido, false en caso contrario.
+	 * */
+	public static boolean isValid(String accountNumber) {
+		boolean isValid = true;
+		
+		if(accountNumber.length() != 10) {							//Si tiene un largo distinto que un numero de cuenta valido
+			isValid = false;											//no es valida
+		}
+		else if(accountNumber.charAt(8) != '-') {					//Si no tiene el guion en la posicion correspondiente
+			isValid = false;											//no es valida
+		}
+		else if(Account.getTypeAccount(accountNumber) == TypeAccount.NO_VALID) {		//Si tiene un digito identificador del tipo de cuenta no valido
+			isValid = false;																//no es valida
+		}
+		else {														//Si algun caracter no es un digito
+			for(int i = 0; i < 8; ++i) {								//no es valida
+				if(!Character.isDigit(accountNumber.charAt(i))) {
+					isValid = false;
+					break;
+				}
+			}
+		}
+			
+		return isValid;
+	}
+	
+	/**
 	* @return saldo actual de la cuenta
 	*/
 	public int getBalance() {

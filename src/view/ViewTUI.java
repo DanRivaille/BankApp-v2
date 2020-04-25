@@ -2,6 +2,10 @@ package view;
 import controller.*;
 import java.io.*;
 
+/**
+ * Clase correspondiente a la vista del patron MVC 
+ * */
+
 public class ViewTUI {
 
 	/**

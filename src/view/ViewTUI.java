@@ -40,19 +40,14 @@ public class ViewTUI {
 			System.out.println("5 - Salir");
 			System.out.print("\nIngrese una opcion: ");
 
-			try {
-				option = Integer.parseInt(getInput());
-			}
-			catch(NumberFormatException e) {
-				option = -1;
-			}
+			option = readOption();
 
 			switch(option) {
 				case 1  : this.controllerTUI.showFavoritesAddressees(); break;
-				case 2  : this.controllerTUI.showAddressees(); break;
-				case 3  : this.controllerTUI.addAddressee(); break;
-				case 4  : this.controllerTUI.removeAddressee(); break;
-				case 5  : break;
+				case 2  : this.controllerTUI.showAddressees(); 			break;
+				case 3  : this.controllerTUI.addAddressee(); 			break;
+				case 4  : this.controllerTUI.removeAddressee(); 		break;
+				case 5  : 												break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente");
 			}
 
@@ -95,6 +90,23 @@ public class ViewTUI {
 		System.out.print("\n\n\n\n\n\n\n\n");
 	}
 
+	/**
+	 * Lee la opcion ingresada por el usuario.
+	 * @return opcion ingresada por el usuario.
+	 * */
+	public int readOption() {
+		int option;
+		
+		try {
+			option = Integer.parseInt(getInput());
+		}
+		catch(NumberFormatException e) {
+			option = -1;
+		}
+		
+		return option;
+	}
+	
 	//Atributos
 	private BufferedReader keyboardInput;
 	private ControllerTUI controllerTUI;

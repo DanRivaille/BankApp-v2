@@ -112,6 +112,46 @@ public class ControllerTUI {
 			this.viewTUI.setOutput("No existe un destinatario con el numero de cuenta ingresado\\n");
 		}
 	}
+	
+	/**
+	 * Muestra la cuenta seleccionada por el usuario
+	 * */
+	public void showAccount() {
+		Account account = chooseAccount();
+
+		if(account != null)
+			account.showInfo();
+	}
+	
+	/**
+	 * El usuario selecciona la cuenta en la que quiere operar
+	 * */
+	public Account chooseAccount() {
+		Client client = this.bank.getClient();
+		Account account;
+		int option;
+		
+		try {
+			this.viewTUI.setOutput("Seleccione cuenta (1 - cuenta rut, 2 - cuenta ahorro): ");
+			option = Integer.parseInt(this.viewTUI.getInput());
+		}
+		catch (NumberFormatException e) {
+			option = -1;
+		}
+		
+		if(option == 1) {
+			account = client.getAccount(TypeAccount.RUT_ACCOUNT);
+		}
+		else if(option == 2){
+			account = client.getAccount(TypeAccount.SAVING_ACCOUNT);
+		}
+		else {
+			this.viewTUI.setOutput("Opcion ingresada no valida\n");
+			account = null;
+		}
+		
+		return account;
+	}
 
 	//Atributos
 	private ViewTUI viewTUI;

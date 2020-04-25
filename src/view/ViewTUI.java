@@ -32,30 +32,79 @@ public class ViewTUI {
 		this.controllerTUI = controllerTUI;
 	}
 
+	/**
+	 * Menu principal de la aplicacion
+	 * */
 	public void mainMenu() {
 		int option;
 
 		do {
 			System.out.println("Bienvenido a BankApp\n");
-			System.out.println("1 - Destinatarios favoritos");
-			System.out.println("2 - Destinatarios regulares");
-			System.out.println("3 - Agregar destinatario");
-			System.out.println("4 - Eliminar destinario");
-			System.out.println("5 - Salir");
+			System.out.println("1 - Mis Cuentas");
+			System.out.println("2 - Transferencias");
+			System.out.println("3 - Salir");
 			System.out.print("\nIngrese una opcion: ");
 
 			option = readOption();
 
 			switch(option) {
-				case 1  : this.controllerTUI.showFavoritesAddressees(); break;
-				case 2  : this.controllerTUI.showAddressees(); 			break;
-				case 3  : this.controllerTUI.addAddressee(); 			break;
-				case 4  : this.controllerTUI.removeAddressee(); 		break;
-				case 5  : 												break;
-				default : System.out.println("Opcion no valida, intentelo nuevamente");
+				case 1  : this.controllerTUI.showAccount();   pause(); break;
+				case 2  : menuTransfer(); 					  		   break;
+				case 3  : break;
+				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
 			}
 
-			pause();
+		}while(option != 3);
+	}
+	
+	/**
+	 * Menu de transferencias
+	 * */
+	public void menuTransfer() {
+		int option;
+
+		do {
+			System.out.println("1 - Transferir");
+			System.out.println("2 - Destinatarios");
+			System.out.println("3 - Volver");
+			System.out.print("\nIngrese una opcion: ");
+
+			option = readOption();
+
+			switch(option) {
+				case 1  : System.out.println("Transferir"); pause(); break;
+				case 2  : menuAddressees(); break;
+				case 3  : break;
+				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
+			}
+
+		}while(option != 3);
+	}
+	
+	/**
+	 * Menu de destinatarios
+	 * */
+	public void menuAddressees() {
+		int option;
+
+		do {
+			System.out.println("1 - Destinatarios favoritos");
+			System.out.println("2 - Destinatarios regulares");
+			System.out.println("3 - Agregar destinatario");
+			System.out.println("4 - Eliminar destinario");
+			System.out.println("5 - Volver");
+			System.out.print("\nIngrese una opcion: ");
+
+			option = readOption();
+
+			switch(option) {
+				case 1  : this.controllerTUI.showFavoritesAddressees(); pause(); break;
+				case 2  : this.controllerTUI.showAddressees(); 			pause(); break;
+				case 3  : this.controllerTUI.addAddressee(); 			pause(); break;
+				case 4  : this.controllerTUI.removeAddressee(); 		pause(); break;
+				case 5  : 												break;
+				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
+			}
 
 		}while(option != 5);
 	}

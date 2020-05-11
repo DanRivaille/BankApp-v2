@@ -14,7 +14,7 @@ public class Transaction {
 
 	private int amount;							//Monto asociado a la transaccion, (negativo indica un cargo, positivo un abono)
 	private Date date;							//Fecha cuando se realizo la transaccion
-	private Addressee asociatedAccount;			//Cuenta asociada a la transaccion
+	private Addressee asociatedAccount;		//Cuenta asociada a la transaccion
 	
 	/**
 	 * Constructor, inicializa el monto con la cantidad ingresada y la fecha actual
@@ -31,10 +31,10 @@ public class Transaction {
 	 * @param amount monto asociado a la transaccion
 	 * @param accountNumber numero de la cuenta asociada a la transaccion
 	 * */
-	public Transaction(int amount, String accountNumber) {
+	public Transaction(int amount, Account asociatedAccount) {
 		setAmount(amount);
 		this.date = new Date();
-		this.asociatedAccount = new Addressee(accountNumber);
+		this.asociatedAccount = new Addressee(asociatedAccount);
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class Transaction {
 	/**
 	 * @param newAccountNumber establece un nuevo numero de cuenta para la cuenta asociada
 	 * */
-	public void setAccountNumber(String newAccountNumber) {
-		this.asociatedAccount.setAccountNumber(newAccountNumber);
+	public void setAccount(Account newAsociatedAccount) {
+		this.asociatedAccount.setAccount(newAsociatedAccount);
 	}
 }

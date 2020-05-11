@@ -16,12 +16,15 @@ public class BankApp {
 		Client client = new Client("Dan Santos", "20360262-6");
 		bank.setClient(client);
 		
-		client.addAddressee(new Addressee("23404121-3", "Contador", false));
-		client.addAddressee(new Addressee("13404345-3", "Mensualidad", false));
-		client.addAddressee(new Addressee("19202175-5", "Dentista", true));
-		client.addAddressee(new Addressee("20313773-1", "Universidad", true));
-		
 		bank.addAccount("20360262-1");
+		bank.addAccount("20360262-2");
+		bank.addAccount("00000000-1");
+		bank.addAccount("00000001-2");
+		bank.addAccount("00000002-1");
+		
+		client.addAddressee(new Addressee(bank.getAccount("00000000-1"), "Contador", false));
+		client.addAddressee(new Addressee(bank.getAccount("00000001-2"), "Dentista", true));
+		client.addAddressee(new Addressee(bank.getAccount("00000002-1"), "Universidad", false));
 		
 		viewTUI.mainMenu();
 	}

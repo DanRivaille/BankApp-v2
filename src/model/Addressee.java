@@ -1,4 +1,5 @@
 package model;
+
 /**
  * Clase que modelara la informacion de un destinatario
  * 
@@ -8,7 +9,7 @@ package model;
 
 public class Addressee {
 	
-	private String accountNumber;			//Numero de la cuenta.
+	private Account asociatedAccount;		//Cuenta asociada del destinatario.
 	private String name;					//Nombre asociado del destinatario.
 	private boolean favorite;				//Indica si el destinatario se guardo como favorito.
 	
@@ -16,15 +17,15 @@ public class Addressee {
 	 * Constructor predeterminado, establece los valores por defecto de los atributos
 	 * */
 	public Addressee() {
-		this("00000000-0");			//llama al constructor de abajo con el valor por defecto del nunmero de cuenta
+		this(null);			//llama al constructor de abajo con el valor por defecto del nunmero de cuenta
 	}
 	
 	/**
 	 * Constructor que solo establece el numero de cuenta del destinatario
 	 * @param accountNumber numero de cuenta inicial del destinatario 
 	 * */
-	public Addressee(String accountNumber) {
-		this.accountNumber = accountNumber;
+	public Addressee(Account asociatedAccount) {
+		this.asociatedAccount = asociatedAccount;
 		this.name = "";
 		this.favorite = false;
 	}
@@ -35,8 +36,8 @@ public class Addressee {
 	 * @param name nombre del destinatario
 	 * @param isFavorite indica si el destinatario esta guardado como favorito o no
 	 * */
-	public Addressee(String accountNumber, String name, boolean isFavorite) {
-		this.accountNumber = accountNumber;
+	public Addressee(Account asociatedAccount, String name, boolean isFavorite) {
+		this.asociatedAccount = asociatedAccount;
 		this.name = name;
 		this.favorite = isFavorite;
 	}
@@ -45,7 +46,7 @@ public class Addressee {
 	 * @return el numero de cuenta del destinatario
 	 * */
 	public String getAccountNumber() {
-		return this.accountNumber;
+		return this.asociatedAccount.getAccountNumber();
 	}
 	
 	/**
@@ -65,8 +66,8 @@ public class Addressee {
 	/**
 	 * @param newAccountNumber establece un nuevo numero de cuenta
 	 * */
-	public void setAccountNumber(String newAccountNumber) {
-		this.accountNumber = newAccountNumber;
+	public void setAccount(Account newAsociatedAccount) {
+		this.asociatedAccount = newAsociatedAccount;
 	}
 	
 	/**
@@ -83,3 +84,4 @@ public class Addressee {
 		this.favorite = isFavorite;
 	}
 }
+

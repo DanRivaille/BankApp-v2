@@ -62,11 +62,14 @@ public class ControllerTUI {
 		if(!Account.isValid(accountNumber)) {
 			this.viewTUI.setOutput("Numero de cuenta ingresado no valido\n");
 		}
+		else if(!this.bank.existsAccount(accountNumber)) {
+			this.viewTUI.setOutput("No existe una cuenta con el numero de cuenta ingresado\n");
+		}
 		else if(client.existsAddressee(accountNumber)) {
 			this.viewTUI.setOutput("Ya existe un destinatario con el numero de cuenta ingresado\n");
 		}
 		else {
-			client.addAddressee(new Addressee(accountNumber, name, isFavorite));
+			client.addAddressee(new Addressee(this.bank.getAccount(accountNumber), name, isFavorite));
 			this.viewTUI.setOutput("Destinatario guardado correctamente\n");
 		}
 	}

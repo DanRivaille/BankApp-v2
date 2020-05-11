@@ -49,9 +49,9 @@ public class Account {
 	 * @param amount cantidad a depositar
 	 * @param accountNumber numero de cuenta que realizo el deposito 
 	 * */
-	public void depositFrom(int amount, String accountNumber) {
+	public void depositFrom(int amount, Account asociatedAccount) {
 		setBalance(amount + getBalance());
-		addTransaction(amount, accountNumber);
+		addTransaction(amount, asociatedAccount);
 	}
 	
 	/**
@@ -59,9 +59,9 @@ public class Account {
 	 * @param amount cantidad a transferir
 	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
 	 * */
-	public void transferTo(int amount, String accountNumber) {
+	public void transferTo(int amount, Account asociatedAccount) {
 		setBalance(getBalance() - amount);
-		addTransaction(-amount, accountNumber);
+		addTransaction(-amount, asociatedAccount);
 	}
 	
 	/**
@@ -69,11 +69,11 @@ public class Account {
 	 * @param amount monto relacionado con la transaccion
 	 * @param accountNumber asociada a la transaccion
 	 * */
-	public void addTransaction(int amount, String accountNumber) {
+	public void addTransaction(int amount, Account asociatedAccount) {
 		if(this.history.size() >= 20)
 			this.history.remove(0);
 		
-		this.history.add(new Transaction(amount, accountNumber));
+		this.history.add(new Transaction(amount, asociatedAccount));
 	}
 	
 	/**

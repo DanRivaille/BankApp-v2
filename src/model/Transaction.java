@@ -17,13 +17,6 @@ public class Transaction {
 	private Addressee asociatedAccount;			//Cuenta asociada a la transaccion
 	
 	/**
-	 * Constructor predeterminado, inicializa el monto en 0, y la fecha actual
-	 * */
-	public Transaction() {
-		this(0);						//llama al contructos de abajo, con el valor por defecto del monto
-	}
-	
-	/**
 	 * Constructor, inicializa el monto con la cantidad ingresada y la fecha actual
 	 * @param amount monto asociado a la transaccion realizada
 	 * */

@@ -95,14 +95,21 @@ public class Client {
 	 * @return lista con los destinatarios guardados.
 	 * */
 	public ArrayList<Addressee> getAddressees() {
-		ArrayList<Addressee> list;											//lista que sera retornada
-		list = new ArrayList<Addressee>(this.addressees.size());			//se instancia y se le establece en largo inicial
+		//Lista que almacenara los destinatarios del cliente y sera retornada.
+		ArrayList<Addressee> list;
 		
-		Iterator<String> iterator = this.addressees.keySet().iterator();	//se obtiene un iterador para el Set de claves del mapa
+		//Se instancia la lista y se le establece como largo la cantidad de destinatarios que tiene el cliente.
+		list = new ArrayList<Addressee>(this.addressees.size());
 		
-		while(iterator.hasNext()) {											//se recorren las claves del mapa
-			String accountNumber = iterator.next();								//se obtiene la clave (numero de cuenta)
-			list.add(this.addressees.get(accountNumber));						//se guarda en la lista en destinatario asociado
+		//Se obtiene el iterador del mapa de destinatarios del cliente.
+		Iterator<String> iterator = this.addressees.keySet().iterator();
+		
+		while(iterator.hasNext()) {
+			//Se obtiene la clave (numero de cuenta del destinatario actual)
+			String accountNumber = iterator.next();
+			
+			//Se guarda el destinatario actual en la lista
+			list.add(this.addressees.get(accountNumber));
 		}
 		
 		return list;

@@ -4,7 +4,14 @@ import controller.ControllerTUI;
 import model.*;
 import view.ViewTUI;
 
+/**
+ * Clase principal de la aplicacion
+ * @author Dan Santos
+ * @version 11-05-2020
+ * */
+
 public class BankApp {
+	
 	public static void main(String args[]) {
 		Bank bank = new Bank();
 		ControllerTUI controllerTUI = new ControllerTUI(bank);

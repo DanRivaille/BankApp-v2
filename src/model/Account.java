@@ -12,6 +12,10 @@ import java.util.ListIterator;
 
 public class Account {
 
+	private int balance;							//Saldo de la cuenta.
+	private String accountNumber;					//Numero de cuenta 
+	private LinkedList<Transaction> history;		//Historial de movimientos de la cuenta (guarda los ultimos 20 movimientos)
+	
 	/**
 	* Contructor por defecto, inicializa el saldo en 0 y el numero de cuenta en "00000000-0"
 	*/
@@ -178,9 +182,4 @@ public class Account {
 			numTransaction++;
 		}
 	}
-
-	//Atributos
-	private int balance;
-	private String accountNumber;
-	private LinkedList<Transaction> history;
 }

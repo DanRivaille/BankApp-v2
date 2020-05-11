@@ -8,6 +8,10 @@ package model;
 
 public class Addressee {
 	
+	private String accountNumber;			//Numero de la cuenta.
+	private String name;					//Nombre asociado del destinatario.
+	private boolean favorite;				//Indica si el destinatario se guardo como favorito.
+	
 	/**
 	 * Constructor predeterminado, establece los valores por defecto de los atributos
 	 * */
@@ -78,9 +82,4 @@ public class Addressee {
 	public void setFavorite(boolean isFavorite) {
 		this.favorite = isFavorite;
 	}
-	
-	//Atributos
-	private String accountNumber;
-	private String name;
-	private boolean favorite;
 }

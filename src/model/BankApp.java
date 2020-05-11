@@ -12,6 +12,9 @@ import java.util.HashMap;
 
 public class BankApp {
 
+	private HashMap <String, Account> accounts;				//Cuentas guardadas del sistema
+	private Client client;									//Guarda la informacion del cliente actual de la aplicacion
+	
 	public static void main(String args[]) {
 		BankApp bank = new BankApp();
 		ControllerTUI controllerTUI = new ControllerTUI(bank);
@@ -106,8 +109,4 @@ public class BankApp {
 	public void setClient(Client newClient) {
 		this.client = newClient;
 	}
-	
-	//Atributos
-	private HashMap <String, Account> accounts;
-	private Client client;
 }

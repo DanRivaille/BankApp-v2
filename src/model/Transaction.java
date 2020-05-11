@@ -11,6 +11,10 @@ import java.util.Date;
  * */
 
 public class Transaction {
+
+	private int amount;							//Monto asociado a la transaccion, (negativo indica un cargo, positivo un abono)
+	private Date date;							//Fecha cuando se realizo la transaccion
+	private Addressee asociatedAccount;			//Cuenta asociada a la transaccion
 	
 	/**
 	 * Constructor predeterminado, inicializa el monto en 0, y la fecha actual
@@ -74,9 +78,4 @@ public class Transaction {
 	public void setAccountNumber(String newAccountNumber) {
 		this.asociatedAccount.setAccountNumber(newAccountNumber);
 	}
-	
-	//Atributos
-	private int amount;
-	private Date date;
-	private Addressee asociatedAccount;
 }

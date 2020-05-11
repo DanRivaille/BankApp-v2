@@ -8,6 +8,9 @@ import java.io.*;
 
 public class ViewTUI {
 
+	private BufferedReader keyboardInput;				//Lector de la entrada del usuario por teclado.
+	private ControllerTUI controllerTUI;				//Controlador de la vista.
+	
 	/**
 	 * Contructor, establece todos los atributos de la clase
 	 * @param controllerTUI instancia del controlador de la clase vista
@@ -159,8 +162,4 @@ public class ViewTUI {
 		
 		return option;
 	}
-	
-	//Atributos
-	private BufferedReader keyboardInput;
-	private ControllerTUI controllerTUI;
 }

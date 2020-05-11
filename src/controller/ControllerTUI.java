@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class ControllerTUI {
 
+	private ViewTUI viewTUI;					//Vista a ser controlada.
+	private BankApp bank;						//Modelo a controlar.
+	
 	/**
 	 * Contructor, establece los atributos de la clase
 	 * @param bank intancia de la clase modelo
@@ -148,13 +151,8 @@ public class ControllerTUI {
 		Account account;
 		int option;
 		
-		try {
-			this.viewTUI.setOutput("Seleccione cuenta (1 - cuenta rut, 2 - cuenta ahorro): ");
-			option = Integer.parseInt(this.viewTUI.getInput());
-		}
-		catch (NumberFormatException e) {
-			option = -1;
-		}
+		this.viewTUI.setOutput("Seleccione cuenta (1 - cuenta rut, 2 - cuenta ahorro): ");
+		option = this.viewTUI.readOption();
 		
 		if(option == 1) {
 			account = client.getAccount(TypeAccount.RUT_ACCOUNT);
@@ -188,8 +186,4 @@ public class ControllerTUI {
 		
 		return account;
 	}
-
-	//Atributos
-	private ViewTUI viewTUI;
-	private BankApp bank;
 }

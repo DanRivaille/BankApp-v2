@@ -11,6 +11,12 @@ import java.util.Iterator;
 
 public class Client {
 	
+	private String name;								//Nombre del cliente.
+	private String rut;									//Rut del cliente.
+	private Account rutAccount;							//Informacion de la cuenta rut del cliente.
+	private Account savingAccount;						//Informacion de la cuenta de ahorro del cliente.
+	private HashMap<String, Addressee> addressees;		//Destinatarios del cliente.
+	
 	/**
 	 * Constructor predeterminado, establece los valores iniciales de los atributos, e instancia
 	 * los atributos objeto de la clase.
@@ -131,11 +137,4 @@ public class Client {
 			this.savingAccount = account;
 			
 	}
-	
-	//Atributos
-	private String name;
-	private String rut;
-	private Account rutAccount;
-	private Account savingAccount;
-	private HashMap<String, Addressee> addressees;
 }

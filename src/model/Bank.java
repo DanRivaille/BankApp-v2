@@ -1,6 +1,4 @@
 package model;
-import view.*;
-import controller.*;
 import java.util.HashMap;
 
 /**
@@ -10,36 +8,15 @@ import java.util.HashMap;
  * @version 04-04-2020
  * */
 
-public class BankApp {
+public class Bank {
 
 	private HashMap <String, Account> accounts;				//Cuentas guardadas del sistema
 	private Client client;									//Guarda la informacion del cliente actual de la aplicacion
 	
-	public static void main(String args[]) {
-		BankApp bank = new BankApp();
-		ControllerTUI controllerTUI = new ControllerTUI(bank);
-		ViewTUI viewTUI = new ViewTUI();
-		
-		controllerTUI.setView(viewTUI);
-		viewTUI.setController(controllerTUI);
-		
-		Client client = new Client("Dan Santos", "20360262-6");
-		bank.setClient(client);
-		
-		client.addAddressee(new Addressee("23404121-3", "Contador", false));
-		client.addAddressee(new Addressee("13404345-3", "Mensualidad", false));
-		client.addAddressee(new Addressee("19202175-5", "Dentista", true));
-		client.addAddressee(new Addressee("20313773-1", "Universidad", true));
-		
-		bank.addAccount("20360262-1");
-		
-		viewTUI.mainMenu();
-	}
-	
 	/**
 	 * Constructor prederminado de la clase, instancia los atributos objeto.
 	 * */
-	public BankApp() {
+	public Bank() {
 		this(new Client());
 	}
 	
@@ -47,7 +24,7 @@ public class BankApp {
 	 * Constructor que establece el cliente e instancia los demas atributos objeto.
 	 * @param cliente cliente inicial.
 	 * */
-	public BankApp(Client client) {
+	public Bank(Client client) {
 		this.accounts = new HashMap<String, Account>();
 		this.client = client;
 	}

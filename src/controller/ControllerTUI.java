@@ -10,13 +10,13 @@ import java.util.ArrayList;
 public class ControllerTUI {
 
 	private ViewTUI viewTUI;					//Vista a ser controlada.
-	private BankApp bank;						//Modelo a controlar.
+	private Bank bank;						//Modelo a controlar.
 	
 	/**
 	 * Contructor, establece los atributos de la clase
 	 * @param bank intancia de la clase modelo
 	 * */
-	public 	ControllerTUI(BankApp bank) {
+	public 	ControllerTUI(Bank bank) {
 		this.bank = bank;
 	}
 
@@ -36,7 +36,7 @@ public class ControllerTUI {
 	/**
 	 * Establece la instancia del atributo de la clase modelo.
 	 * */
-	public void setModel(BankApp bank) {
+	public void setModel(Bank bank) {
 		this.bank = bank;
 	}
 

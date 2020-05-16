@@ -36,9 +36,66 @@ public class ViewTUI {
 	}
 
 	/**
-	 * Menu principal de la aplicacion
+	 * Menu principal de la aplicacion.
 	 * */
 	public void mainMenu() {
+		int option;
+
+		System.out.println("Bienvenido a BankApp\n");
+		System.out.println("1 - Modo Administrador");
+		System.out.println("2 - Modo Cliente");
+		System.out.println("3 - Salir");
+		System.out.print("\nIngrese una opcion: ");
+
+		option = readOption();
+		
+		while((1 != option) && (2 != option)) {
+			System.out.println("Opcion no valida, intentelo nuevamente"); 
+			pause();
+			
+			option = readOption();
+		}
+
+		switch(option) {
+			case 1  : mainMenuAdmin(); break;
+			case 2  : mainMenuClient(); break;
+		}
+		
+		System.out.println("Gracias vuelva pronto."); 
+		pause();
+	}
+	
+	/**
+	 * Menu principal de la aplicacion en modo administrador.
+	 * */
+	public void mainMenuAdmin() {
+		int option;
+
+		do {
+			System.out.println("Bienvenido a BankApp\n");
+			System.out.println("1 - Buscar Cuenta");
+			System.out.println("2 - Agregar Cuenta");
+			System.out.println("3 - Eliminar Cuenta");
+			System.out.println("4 - Salir");
+			System.out.print("\nIngrese una opcion: ");
+
+			option = readOption();
+
+			switch(option) {
+				case 1  : System.out.println("1 - Buscar Cuenta");		break;
+				case 2  : System.out.println("2 - Agregar Cuenta");		break;
+				case 3  : System.out.println("3 - Eliminar Cuenta");	break;
+				case 4  : break;
+				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
+			}
+
+		}while(option != 4);
+	}
+	
+	/**
+	 * Menu principal de la aplicacion en modo cliente.
+	 * */
+	public void mainMenuClient() {
 		int option;
 
 		do {

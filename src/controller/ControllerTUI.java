@@ -128,11 +128,16 @@ public class ControllerTUI {
 		if(originAccount != null) {
 			Account destinyAccount = chooseDestinyAccount();
 			
-			this.viewTUI.setOutput("Cuenta origen: \n\n");
-			originAccount.showInfo();
-			
-			this.viewTUI.setOutput("\n\nCuenta destino: \n\n");
-			destinyAccount.showInfo();
+			if(destinyAccount != null) {
+				this.viewTUI.setOutput("Ingrese el monto a transferir: ");
+				
+				
+				this.viewTUI.setOutput("Cuenta origen: \n\n");
+				originAccount.showInfo();
+				
+				this.viewTUI.setOutput("\n\nCuenta destino: \n\n");
+				destinyAccount.showInfo();
+			}
 		}
 	}
 	

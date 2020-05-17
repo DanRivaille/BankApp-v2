@@ -1,5 +1,7 @@
 package model;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Clase principal de la aplicacion
@@ -61,15 +63,60 @@ public class Bank {
 	 * Comprueba que exista una cuenta guardada asociada al numero de cuenta ingresado.
 	 * @return true si esta guardada la cuenta, false en caso contrario.
 	 * */
+	public void removeAccount(String accountNumber) {
+		if(this.accounts.containsKey(accountNumber)) {
+			this.accounts.remove(accountNumber);
+		}
+	}
+	
+	/**
+	 * Comprueba que exista una cuenta guardada asociada al numero de cuenta ingresado.
+	 * @return true si esta guardada la cuenta, false en caso contrario.
+	 * */
 	public boolean existsAccount(String accountNumber) {
 		return this.accounts.containsKey(accountNumber);
 	}
 	
 	/**
-	 * @return cuenta asociada al numero de cuenta ingreado.
+	 * @return cuenta asociada al numero de cuenta ingreado, si no existe una cuenta con el numero de cuenta ingresado
+	 * retorna null, sino retorna la cuenta.
 	 * */
 	public Account getAccount(String accountNumber) {
-		return this.accounts.get(accountNumber);
+		if(this.accounts.containsKey(accountNumber)) {
+			return this.accounts.get(accountNumber);
+		}
+		else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Funcion que retorna una lista con las cuentas que entran en el rango ingresad como parametro
+	 * @return ArrayList que contiene las cuentas que cumplen con el rango ingresado.
+	 * */
+	public ArrayList<Account> getAccountBalanceRank(int lowerLimit, int upperLimit) {
+		//Lista que almacenara las cuentas correspondientes
+		ArrayList<Account> accountBalanceRank = new ArrayList<Account>();
+		
+		//Iterador que recorrera las claves del mapa de cuentas
+		Iterator<String> accountNumber = this.accounts.keySet().iterator();
+		
+		//Se recorre el mapa de cuentas
+		while(accountNumber.hasNext()) {
+			//Se obtiene la cuenta actual
+			Account account = this.accounts.get(accountNumber.next());
+			
+			//Se obtiene el saldo de la cuenta actual
+			int balance = account.getBalance();
+			
+			//Si el saldo de la cuenta entra en el rango ingresado, se ingresa a la lista
+			if((balance >= lowerLimit) && (balance <= upperLimit)) { 
+				accountBalanceRank.add(account);
+			}
+		}
+		
+		//Se retorna la lista con todas las cuentas que cumplieron el rango
+		return accountBalanceRank;
 	}
 	
 	/**

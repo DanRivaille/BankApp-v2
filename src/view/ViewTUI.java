@@ -49,7 +49,7 @@ public class ViewTUI {
 
 		option = readOption();
 		
-		while((1 != option) && (2 != option)) {
+		while((option < 1) || (option > 3)) {
 			System.out.println("Opcion no valida, intentelo nuevamente"); 
 			pause();
 			
@@ -73,23 +73,25 @@ public class ViewTUI {
 
 		do {
 			System.out.println("Bienvenido a BankApp\n");
-			System.out.println("1 - Buscar Cuenta");
-			System.out.println("2 - Agregar Cuenta");
-			System.out.println("3 - Eliminar Cuenta");
-			System.out.println("4 - Salir");
+			System.out.println("1 - Buscar Cuenta por numero de cuenta");
+			System.out.println("2 - Buscar Cuenta por rango de saldo");
+			System.out.println("3 - Agregar Cuenta");
+			System.out.println("4 - Eliminar Cuenta");
+			System.out.println("5 - Salir");
 			System.out.print("\nIngrese una opcion: ");
 
 			option = readOption();
 
 			switch(option) {
-				case 1  : System.out.println("1 - Buscar Cuenta");		break;
-				case 2  : System.out.println("2 - Agregar Cuenta");		break;
-				case 3  : System.out.println("3 - Eliminar Cuenta");	break;
-				case 4  : break;
+				case 1  : this.controllerTUI.searchNumberAccount();	pause();	break;
+				case 2  : this.controllerTUI.searchRankAccount();	pause();	break;
+				case 3  : this.controllerTUI.addAccount();		pause();	break;
+				case 4  : this.controllerTUI.removeAccount();	pause();	break;
+				case 5  : break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
 			}
 
-		}while(option != 4);
+		}while(option != 5);
 	}
 	
 	/**
@@ -152,7 +154,8 @@ public class ViewTUI {
 			System.out.println("2 - Destinatarios regulares");
 			System.out.println("3 - Agregar destinatario");
 			System.out.println("4 - Eliminar destinario");
-			System.out.println("5 - Volver");
+			System.out.println("5 - Modificar destinario");
+			System.out.println("6 - Volver");
 			System.out.print("\nIngrese una opcion: ");
 
 			option = readOption();
@@ -162,11 +165,12 @@ public class ViewTUI {
 				case 2  : this.controllerTUI.showAddressees(); 			pause(); break;
 				case 3  : this.controllerTUI.addAddressee(); 			pause(); break;
 				case 4  : this.controllerTUI.removeAddressee(); 		pause(); break;
-				case 5  : 												break;
+				case 5  : this.controllerTUI.editAddressee(); 			pause(); break;
+				case 6	: break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
 			}
 
-		}while(option != 5);
+		}while(option != 6);
 	}
 
 	/**

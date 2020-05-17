@@ -116,6 +116,19 @@ public class Client {
 	}
 	
 	/**
+	 * @return destinatario correspondiente con el numero de cuenta ingresado, si no existe un destinatario
+	 * con el numero de cuenta ingresado retorna null
+	 * */
+	public Addressee getAddressee(String accountNumber) {
+		if(this.addressees.containsKey(accountNumber)) {
+			return this.addressees.get(accountNumber);
+		}
+		else {
+			return null;
+		}			
+	}
+	
+	/**
 	 * Establece el nombre del cliente.
 	 * @param newName nuevo nombre del cliente.
 	 * */

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ControllerTUI {
 
 	private ViewTUI viewTUI;					//Vista a ser controlada.
-	private Bank bank;						//Modelo a controlar.
+	private Bank bank;							//Modelo a controlar.
 	
 	/**
 	 * Contructor, establece los atributos de la clase
@@ -39,7 +39,93 @@ public class ControllerTUI {
 	public void setModel(Bank bank) {
 		this.bank = bank;
 	}
+	
+	/**
+	 * Busca una cuenta desde el modo administrador
+	 * */
+	public void searchNumberAccount() {
+		String accountNumber;
+		Account account;
+		
+		this.viewTUI.setOutput("Ingrese el numero de cuenta a buscar: ");
+		accountNumber = this.viewTUI.getInput();
+		
+		account = this.bank.getAccount(accountNumber);
+		
+		if(null == account) {
+			this.viewTUI.setOutput("No existe una cuenta con el numero de cuenta ingresado.\n");
+		}
+		else {
+			account.showInfo();
+		}
+	}
+	
+	/**
+	 * Busca una cuenta con un rango especifico, desde el modo administrador
+	 * */
+	public void searchRankAccount() {
+		int lowerLimit;
+		int upperLimit;
+		
+		this.viewTUI.setOutput("Ingrese el rango inferior: ");
+		lowerLimit = Integer.parseInt(this.viewTUI.getInput());
+		
+		this.viewTUI.setOutput("Ingrese el rango superior: ");
+		upperLimit = Integer.parseInt(this.viewTUI.getInput());
+		
+		if(upperLimit < lowerLimit) {
+			this.viewTUI.setOutput("Rango ingresado no valido");
+		}
+		else {
+			ArrayList<Account> accounts = this.bank.getAccountBalanceRank(lowerLimit, upperLimit);
+			
+			for(Account account : accounts) {
+				account.showInfo();
+				this.viewTUI.setOutput("\n");
+			}
+		}
+	}
 
+	/**
+	 * Agrega una nueva cuenta al sistema, valida que no exista una cuenta con el numero de cuenta ingresado.
+	 * */
+	public void addAccount() {
+		String accountNumber;
+		
+		this.viewTUI.setOutput("Ingrese el nuevo numero de la cuenta: ");
+		accountNumber = this.viewTUI.getInput();
+		
+		
+		if(!Account.isValid(accountNumber)) {
+			this.viewTUI.setOutput("Numero de cuenta ingresado no valido.\n");
+		}	
+		else if(this.bank.existsAccount(accountNumber)) {
+			this.viewTUI.setOutput("Ya existe una cuenta con el numero de cuenta ingresado.\n");
+		}
+		else {
+			this.bank.addAccount(accountNumber);
+			this.viewTUI.setOutput("Cuenta con numero (" + accountNumber + ") agregador correctamente.\n");
+		}
+	}
+	
+	/**
+	 * Elimina una cuenta del sistema, valida que exista una cuenta con el numero de cuenta ingresado.
+	 * */
+	public void removeAccount() {
+		String accountNumber;
+		
+		this.viewTUI.setOutput("Ingrese el nuevo numero de la cuenta: ");
+		accountNumber = this.viewTUI.getInput();
+		
+		if(this.bank.existsAccount(accountNumber)) {
+			this.bank.removeAccount(accountNumber);
+			this.viewTUI.setOutput("Cuenta con numero (" + accountNumber + ") agregador correctamente.\n");
+		}
+		else {
+			this.viewTUI.setOutput("No existe una cuenta con el numero de cuenta ingresado.\n");
+		}
+	}
+	
 	/**
 	 * Obtiene la informacion del nuevo destinatario a guardar y valida que no exista y en 
 	 * los destinatarios guardados del cliente.
@@ -71,6 +157,42 @@ public class ControllerTUI {
 		else {
 			client.addAddressee(new Addressee(this.bank.getAccount(accountNumber), name, isFavorite));
 			this.viewTUI.setOutput("Destinatario guardado correctamente\n");
+		}
+	}
+	
+	/**
+	 * Edita los atributos editables de un destinatario
+	 * */
+	public void editAddressee() {
+		//Numero de cuenta del destinatario a editar
+		String accountNumber;
+		Client client = this.bank.getClient();
+
+		this.viewTUI.setOutput("Numero de cuenta del destinatario a editar: ");
+		accountNumber = this.viewTUI.getInput();
+
+		if(!Account.isValid(accountNumber)) {
+			this.viewTUI.setOutput("Numero de cuenta ingresado no valido\n");
+		}
+		else if(!client.existsAddressee(accountNumber)) {
+			this.viewTUI.setOutput("No existe un destinatario con el numero de cuenta ingresado\\n");
+		}
+		else {
+			Addressee addressee = client.getAddressee(accountNumber);
+			
+			String name;
+			boolean isFavorite;
+
+			this.viewTUI.setOutput("Nombre: ");
+			name = this.viewTUI.getInput();
+
+			this.viewTUI.setOutput("Guardarlo como favorito (1 - si, 2 - no): ");
+			isFavorite = (this.viewTUI.getInput().equals("1")) ? true : false;
+			
+			addressee.setName(name);
+			addressee.setFavorite(isFavorite);
+			
+			this.viewTUI.setOutput("Destinatario modificado correctamente\n");
 		}
 	}
 	

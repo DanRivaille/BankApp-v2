@@ -91,7 +91,7 @@ public class Bank {
 	}
 	
 	/**
-	 * Funcion que retorna una lista con las cuentas que entran en el rango ingresad como parametro
+	 * Funcion que retorna una lista con las cuentas que entran en el rango ingresado como parametro
 	 * @return ArrayList que contiene las cuentas que cumplen con el rango ingresado.
 	 * */
 	public ArrayList<Account> getAccountBalanceRank(int lowerLimit, int upperLimit) {

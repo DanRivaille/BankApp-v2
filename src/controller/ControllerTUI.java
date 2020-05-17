@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class ControllerTUI {
 
-	private ViewTUI viewTUI;					//Vista a ser controlada.
-	private Bank bank;							//Modelo a controlar.
+	private ViewTUI viewTUI;					//Vista del patron MVC a ser controlada.
+	private Bank bank;							//Modelo del patron MVC a controlar.
 	
 	/**
 	 * Contructor, establece los atributos de la clase
@@ -41,7 +41,8 @@ public class ControllerTUI {
 	}
 	
 	/**
-	 * Busca una cuenta desde el modo administrador
+	 * Busca una cuenta desde el modo administrador, usa el numero de cuenta para buscarla en el mapa de cuentas validas
+	 * guardadas en el sistema.
 	 * */
 	public void searchNumberAccount() {
 		String accountNumber;
@@ -61,7 +62,9 @@ public class ControllerTUI {
 	}
 	
 	/**
-	 * Busca una cuenta con un rango especifico, desde el modo administrador
+	 * Busca una cuenta con un rango especifico, desde el modo administrador, lee el limite inferior y el limite superior de
+	 * un rango, valida que sea valido (limite inferior es menor que el limite superior), y muestra todas las cuentas
+	 * que entren en ese rango
 	 * */
 	public void searchRankAccount() {
 		int lowerLimit;

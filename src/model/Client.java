@@ -9,10 +9,9 @@ import java.util.Iterator;
  * @version 12-04-2020 
  * */
 
-public class Client implements Printable{
+public class Client extends User implements Printable{
 	
 	private String name;								//Nombre del cliente.
-	private String rut;									//Rut del cliente.
 	private Account rutAccount;							//Informacion de la cuenta rut del cliente.
 	private Account savingAccount;						//Informacion de la cuenta de ahorro del cliente.
 	private HashMap<String, Addressee> addressees;		//Destinatarios del cliente.
@@ -32,8 +31,9 @@ public class Client implements Printable{
 	 * @param rut, rut del cliente, se asume que es valido.
 	 * */
 	public Client(String name, String rut) {
+		super(rut, User.CLIENT);
+		
 		this.name = name;
-		this.rut = rut;
 		this.addressees = new HashMap<String, Addressee>();
 		this.rutAccount = new Account();
 		this.savingAccount = new Account();
@@ -73,13 +73,6 @@ public class Client implements Printable{
 	 * */
 	public String getName() {
 		return this.name;
-	}
-	
-	/**
-	 * @return rut actual del cliente.
-	 * */
-	public String getRut() {
-		return this.rut;
 	}
 	
 	/**
@@ -134,14 +127,6 @@ public class Client implements Printable{
 	 * */
 	public void setName(String newName) { 
 		this.name = newName;
-	}
-	
-	/**
-	 * Establece le rut del cliente, se asume que es un rut valido.
-	 * @param newRut nuevo rut del cliente.
-	 * */
-	public void setRut(String newRut) {
-		this.rut = newRut;
 	}
 	
 	/**

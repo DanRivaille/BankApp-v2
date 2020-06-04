@@ -10,7 +10,7 @@ import java.util.ListIterator;
  * @version 29-03-2020
  */
 
-public class Account {
+public class Account implements Printable{
 
 	private int balance;							//Saldo de la cuenta.
 	private String accountNumber;					//Numero de cuenta 
@@ -167,7 +167,7 @@ public class Account {
 	}
 
 	/**
-	 * Muestra la informacion general de la cuenta por consola
+	 * Metodo proveniente de la interfaz Printable, muestra la informacion general de la cuenta por consola.
 	 * */
 	public void showInfo() {
 		System.out.println("Saldo: $" + getBalance() + "\nNumero de cuenta: " + getAccountNumber());

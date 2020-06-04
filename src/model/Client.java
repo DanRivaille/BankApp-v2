@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @version 12-04-2020 
  * */
 
-public class Client {
+public class Client implements Printable{
 	
 	private String name;								//Nombre del cliente.
 	private String rut;									//Rut del cliente.
@@ -156,5 +156,21 @@ public class Client {
 		else if(typeAccount == TypeAccount.SAVING_ACCOUNT)
 			this.savingAccount = account;
 			
+	}
+	
+	/**
+	 * Metodo proveniente de la interfaz Printable, muestra la informacion general del cliente por consola.
+	 * */
+	public void showInfo() {
+		System.out.println("Nombre: " + getName());
+		System.out.println("Rut: " + getRut());
+		
+		if(this.rutAccount != null) {
+			rutAccount.showInfo();
+		}
+		
+		if(this.savingAccount != null) {
+			savingAccount.showInfo();
+		}
 	}
 }

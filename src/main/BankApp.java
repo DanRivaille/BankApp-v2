@@ -1,8 +1,8 @@
 package main;
 
-import controller.ControllerTUI;
+import controller.*;
 import model.*;
-import view.ViewTUI;
+import view.*;
 
 /**
  * Clase principal de la aplicacion
@@ -33,6 +33,6 @@ public class BankApp {
 		client.addAddressee(new Addressee(bank.getAccount("00000001-2"), "Dentista", true));
 		client.addAddressee(new Addressee(bank.getAccount("00000002-1"), "Universidad", false));
 		
-		viewTUI.mainMenu();
+		//viewTUI.mainMenu();
 	}
 }

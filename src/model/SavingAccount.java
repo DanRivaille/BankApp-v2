@@ -3,6 +3,13 @@ package model;
 import java.util.ListIterator;
 import java.time.LocalDate;
 
+/**
+ * Clase que modela una cuenta de ahorros, hereda de la clase abstracta Account, 
+ * e implementa el metodo makeImpositions de la forma en que lo realiza un cuenta de ahorros,
+ * deposita un porcentaje del total de depositos de la cuenta en el ultimo mes.
+ * @author Dan Santos
+ * @version 04-06-2020
+ * */
 public class SavingAccount extends Account{
 	
 	private double profitabilityPercentage;				//Porcentaje de rentabilidad actual de la cuenta.

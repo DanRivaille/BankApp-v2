@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * Clase que modela una cuenta corriente, hereda de la clase abstracta Account, 
+ * e implementa el metodo makeImpositions de la forma en que lo realiza un cuenta corriente,
+ * descuenta del saldo actual la cantidad del costo de mantencion de la cuenta.
+ * @author Dan Santos
+ * @version 04-06-2020
+ * */
 public class CurrentAccount extends Account {
 
 	public int maintenanceCost;				//Costo de mantenimiento actual de la cuenta.

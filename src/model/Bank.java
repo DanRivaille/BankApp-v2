@@ -36,7 +36,7 @@ public class Bank {
 	 * @param accountNumber numero  de la nueva cuenta a ingresar.
 	 * */
 	public void addAccount(String accountNumber) {
-		addAccount(0, accountNumber);
+		addAccount(0, accountNumber, Account.getTypeAccount(accountNumber));
 	}
 	
 	/**
@@ -45,9 +45,13 @@ public class Bank {
 	 * @param balance saldo inicial de la nueva cuenta a ingresar.
 	 * @param accountNumber numero de la nueva cuenta a ingresar.
 	 * */
-	public void addAccount(int balance, String accountNumber) {
-		if(!this.accounts.containsKey(accountNumber))
-			this.accounts.put(accountNumber, new Account(balance, accountNumber));
+	public void addAccount(int balance, String accountNumber, TypeAccount typeAccount) {
+		if(!this.accounts.containsKey(accountNumber)) {
+			if(TypeAccount.RUT_ACCOUNT == typeAccount)
+				this.accounts.put(accountNumber, new CurrentAccount(balance, accountNumber));
+			else if(TypeAccount.SAVING_ACCOUNT == typeAccount)
+				this.accounts.put(accountNumber, new SavingAccount(balance, accountNumber));
+		}
 	}
 	
 	/**

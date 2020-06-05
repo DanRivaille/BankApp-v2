@@ -12,8 +12,8 @@ import java.util.Iterator;
 public class Client extends User implements Printable{
 	
 	private String name;								//Nombre del cliente.
-	private Account rutAccount;							//Informacion de la cuenta rut del cliente.
-	private Account savingAccount;						//Informacion de la cuenta de ahorro del cliente.
+	private CurrentAccount rutAccount;							//Informacion de la cuenta rut del cliente.
+	private SavingAccount savingAccount;						//Informacion de la cuenta de ahorro del cliente.
 	private HashMap<String, Addressee> addressees;		//Destinatarios del cliente.
 	
 	/**
@@ -35,8 +35,8 @@ public class Client extends User implements Printable{
 		
 		this.name = name;
 		this.addressees = new HashMap<String, Addressee>();
-		this.rutAccount = new Account();
-		this.savingAccount = new Account();
+		this.rutAccount = new CurrentAccount();
+		this.savingAccount = new SavingAccount();
 	}
 	
 	/**
@@ -137,9 +137,9 @@ public class Client extends User implements Printable{
 		TypeAccount typeAccount = Account.getTypeAccount(account.getAccountNumber());
 		
 		if(typeAccount == TypeAccount.RUT_ACCOUNT)
-			this.rutAccount = account;
+			this.rutAccount = (CurrentAccount) account;
 		else if(typeAccount == TypeAccount.SAVING_ACCOUNT)
-			this.savingAccount = account;
+			this.savingAccount = (SavingAccount) account;
 			
 	}
 	

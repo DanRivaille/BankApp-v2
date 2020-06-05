@@ -4,8 +4,9 @@ package model;
  * Clase que modelara la informacion y utilidades de un usuario en general de la aplicacion.
  * */
 public abstract class User {
-	public static final int ADMIN = 1;			//Constantes para identificar el tipo de usuario administrador
-	public static final int CLIENT = 2;			//Constantes para identificar el tipo de usuario cliente
+	public static final int ADMIN = 1;			//Constante para identificar el tipo de usuario administrador
+	public static final int CLIENT = 2;			//Constante para identificar el tipo de usuario cliente
+	public static final int NOT_VALID = 3;		//Constante para identificar que no se ha establecido el identificador
 	
 	private String rut;							//Rut del usuario.
 	private int idUser;							//Identificador del identificador del usuario, 1 -> Admin, 2-> Cliente.
@@ -15,7 +16,7 @@ public abstract class User {
 	 * */
 	public User() {
 		this.rut = "00000000-0";
-		this.idUser = -1;
+		this.idUser = NOT_VALID;
 	}
 	
 	/**

@@ -10,7 +10,7 @@ import java.util.ListIterator;
  * @version 29-03-2020
  */
 
-public class Account implements Printable{
+public abstract class Account implements Printable{
 
 	private int balance;							//Saldo de la cuenta.
 	private String accountNumber;					//Numero de cuenta 
@@ -43,6 +43,11 @@ public class Account implements Printable{
 		this.accountNumber = newAccountNumber;
 		this.history = new LinkedList<Transaction>();
 	}
+	
+	/**
+	 * Metodo abstracto que realiza las imposiciones dependiendo del tipo de cuenta.
+	 * */
+	public abstract void makeImpositions();
 	
 	/**
 	 * Suma la cantidad "amount" al saldo, guardando la cuenta de origen: "accountNumber"

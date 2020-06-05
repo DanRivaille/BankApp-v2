@@ -2,8 +2,6 @@ package model;
 
 import java.util.ListIterator;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
 
 public class SavingAccount extends Account{
 	
@@ -37,7 +35,27 @@ public class SavingAccount extends Account{
 	 * actual del total de depositos realizados en el ultimo mes.
 	 * */
 	public void makeImpositions() {
-		
+		//acumulara el total de los depositos del ultimo mes
+				int totalDeposit = 0;
+				
+				//Se obtiene un iterador del historial
+				ListIterator<Transaction> history = getHistory();
+				
+				//Fecha actual, se usara para comparar los meses de la fecha de las transacciones
+				final LocalDate currentDate = LocalDate.now();
+				
+				//Se recorre el historial
+				while(history.hasNext()) {
+					//Se obtiene la transaccion actual
+					Transaction transaction = history.next();
+					LocalDate date = transaction.getDate();
+					
+					if(currentDate.getDayOfMonth() == date.getDayOfMonth())
+						totalDeposit++;
+				}
+				
+				//Se le suma al saldo actual el porcentaje de rentabilidad actual del total de depositos en el mes actual
+				setBalance(getBalance() + (int) (totalDeposit * this.profitabilityPercentage));
 	}
 
 	/**

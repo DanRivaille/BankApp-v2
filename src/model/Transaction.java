@@ -1,5 +1,5 @@
 package model;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Clase que modela la informacion de una transaccion bancaria.
@@ -13,7 +13,7 @@ import java.util.Date;
 public class Transaction {
 
 	private int amount;							//Monto asociado a la transaccion, (negativo indica un cargo, positivo un abono)
-	private Date date;							//Fecha cuando se realizo la transaccion
+	private LocalDate date;							//Fecha cuando se realizo la transaccion
 	private Addressee asociatedAccount;		//Cuenta asociada a la transaccion
 	
 	/**
@@ -22,7 +22,7 @@ public class Transaction {
 	 * */
 	public Transaction(int amount) {
 		setAmount(amount);
-		this.date = new Date();
+		this.date = LocalDate.now();
 		this.asociatedAccount = new Addressee();
 	}
 	
@@ -33,7 +33,7 @@ public class Transaction {
 	 * */
 	public Transaction(int amount, Account asociatedAccount) {
 		setAmount(amount);
-		this.date = new Date();
+		this.date = LocalDate.now();
 		this.asociatedAccount = new Addressee(asociatedAccount);
 	}
 	
@@ -47,7 +47,7 @@ public class Transaction {
 	/**
 	 * @return fecha guardada de la transaccion
 	 * */
-	public Date getDate() {
+	public LocalDate getDate() {
 		return this.date;
 	}
 	

@@ -86,7 +86,7 @@ public abstract class Account implements Printable{
 	 * @param accountNumber numero de cuenta a validar.
 	 * @return true si es un numero de cuenta valido, false en caso contrario.
 	 * */
-	public static boolean isValid(String accountNumber) {
+	public final static boolean isValid(String accountNumber) {
 		boolean isValid = true;
 		
 		if(accountNumber.length() != 10) {							//Si tiene un largo distinto que un numero de cuenta valido
@@ -138,7 +138,7 @@ public abstract class Account implements Printable{
 	* @param accountNumber numero de cuenta de la que se desea saber el tipo de cuenta
 	* @return tipo de cuenta de la cuenta ingresada como parametro
 	*/
-	public static TypeAccount getTypeAccount(String accountNumber) {
+	public final static TypeAccount getTypeAccount(String accountNumber) {
 		switch(accountNumber.charAt(9))
 		{
 			case '1' : return TypeAccount.RUT_ACCOUNT;

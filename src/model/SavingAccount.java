@@ -15,18 +15,18 @@ public class SavingAccount extends Account{
 	private double profitabilityPercentage;				//Porcentaje de rentabilidad actual de la cuenta.
 	
 	/**
-	 * Constructor por defecto de la clase, establece el porcentaje de rentabilidad en 0.1%
+	 * Constructor por defecto de la clase, establece el porcentaje de rentabilidad en 1%
 	 * */
 	public SavingAccount() {
-		this.profitabilityPercentage = 0.1f; 
+		this.profitabilityPercentage = 0.01f; 
 	}
 	
 	/**
-	 * Constructor, establece el porcentaje de rentabilidad en 0.1%
+	 * Constructor, establece el porcentaje de rentabilidad en 1%
 	 * */
 	public SavingAccount(int balance, String accountNumber) {
 		super(balance, accountNumber);
-		this.profitabilityPercentage = 0.1f;
+		this.profitabilityPercentage = 0.01f;
 	}
 	
 	/**
@@ -43,26 +43,34 @@ public class SavingAccount extends Account{
 	 * */
 	public void makeImpositions() {
 		//acumulara el total de los depositos del ultimo mes
-				int totalDeposit = 0;
-				
-				//Se obtiene un iterador del historial
-				ListIterator<Transaction> history = getHistory();
-				
-				//Fecha actual, se usara para comparar los meses de la fecha de las transacciones
-				final LocalDate currentDate = LocalDate.now();
-				
-				//Se recorre el historial
-				while(history.hasNext()) {
-					//Se obtiene la transaccion actual
-					Transaction transaction = history.next();
-					LocalDate date = transaction.getDate();
-					
-					if(currentDate.getDayOfMonth() == date.getDayOfMonth())
-						totalDeposit++;
-				}
-				
-				//Se le suma al saldo actual el porcentaje de rentabilidad actual del total de depositos en el mes actual
-				setBalance(getBalance() + (int) (totalDeposit * this.profitabilityPercentage));
+		int totalDeposit = 0;
+		
+		//Se obtiene un iterador del historial
+		ListIterator<Transaction> history = getHistory();
+		
+		//Fecha actual, se usara para comparar los meses de la fecha de las transacciones
+		final LocalDate currentDate = LocalDate.now();
+		
+		while(history.hasNext()) {
+			Transaction transaction = history.next();
+			LocalDate date = transaction.getDate();
+			
+			if((currentDate.getDayOfMonth() == date.getDayOfMonth()) && (currentDate.getDayOfYear() == date.getDayOfYear()))
+				totalDeposit++;
+		}
+		
+		//Se le suma al saldo actual el porcentaje de rentabilidad actual del total de depositos en el mes actual
+		setBalance(getBalance() + (int) (totalDeposit * this.profitabilityPercentage));
+	}
+	
+	/**
+	 * Resta la cantidad "amount" del saldo mas el porcentaje de rentabilidad como penalizacion por
+	 * retirar dinero de la cuenta, guardando la cuenta destino "accountNumber"
+	 * @param amount cantidad a transferir
+	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
+	 * */
+	public void transferTo(int amount, Account asociatedAccount) {
+		super.transferTo(amount * (int) (1 + this.profitabilityPercentage), asociatedAccount);
 	}
 
 	/**

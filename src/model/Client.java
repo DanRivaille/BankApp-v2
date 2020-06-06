@@ -147,6 +147,21 @@ public class Client extends User implements Printable{
 	 * Metodo proveniente de la interfaz Printable, muestra la informacion general del cliente por consola.
 	 * */
 	public void showInfo() {
+		System.out.println(getName() + " - " + getRut());
+		
+		if(this.rutAccount != null) {
+			System.out.println("Cuenta Rut activa");
+		}
+		
+		if(this.savingAccount != null) {
+			System.out.println("Cuenta de Ahorros activa");
+		}
+	}
+	
+	/**
+	 * Metodo proveniente de la interfaz Printable, muestra la informacion especifica del cliente por consola.
+	 * */
+	public void showEspecificInfo() {
 		System.out.println("Nombre: " + getName());
 		System.out.println("Rut: " + getRut());
 		

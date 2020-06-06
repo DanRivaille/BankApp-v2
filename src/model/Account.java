@@ -176,6 +176,14 @@ public abstract class Account implements Printable{
 	 * */
 	public void showInfo() {
 		System.out.println("Saldo: $" + getBalance() + "\nNumero de cuenta: " + getAccountNumber());
+		System.out.println("Cantidad de transacciones: " + this.history.size());
+	}
+	
+	/**
+	 * Metodo proveniente de la interfaz Printable, muestra la informacion especifica de la cuenta por consola.
+	 * */
+	public void showEspecificInfo() {
+		System.out.println("Saldo: $" + getBalance() + "\nNumero de cuenta: " + getAccountNumber());
 		
 		int numTransaction = 1;
 		

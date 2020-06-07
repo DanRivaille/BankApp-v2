@@ -9,11 +9,12 @@ import java.util.Iterator;
  * @version 12-04-2020 
  * */
 
-public class Client extends User implements Printable{
+public class Client implements Printable{
 	
 	private String name;								//Nombre del cliente.
-	private CurrentAccount rutAccount;							//Informacion de la cuenta rut del cliente.
-	private SavingAccount savingAccount;						//Informacion de la cuenta de ahorro del cliente.
+	private String rut;
+	private CurrentAccount rutAccount;					//Informacion de la cuenta rut del cliente.
+	private SavingAccount savingAccount;				//Informacion de la cuenta de ahorro del cliente.
 	private HashMap<String, Addressee> addressees;		//Destinatarios del cliente.
 	
 	/**
@@ -31,8 +32,6 @@ public class Client extends User implements Printable{
 	 * @param rut, rut del cliente, se asume que es valido.
 	 * */
 	public Client(String name, String rut) {
-		super(rut, User.CLIENT);
-		
 		this.name = name;
 		this.addressees = new HashMap<String, Addressee>();
 		this.rutAccount = new CurrentAccount();
@@ -73,6 +72,13 @@ public class Client extends User implements Printable{
 	 * */
 	public String getName() {
 		return this.name;
+	}
+	
+	/**
+	 * @return rut actual del usuario.
+	 * */
+	public String getRut() {
+		return this.rut;
 	}
 	
 	/**
@@ -128,6 +134,14 @@ public class Client extends User implements Printable{
 	public void setName(String newName) { 
 		this.name = newName;
 	}
+
+	/**
+	 * Metodo que establece un nuevo rut para el usuario.
+	 * @param rut nuevo rut del usuario.
+	 * */
+	public void setRut(String rut) {
+		this.rut = rut;
+	}
 	
 	/**
 	 * Establece una cuenta del cliente, la cuenta dependera del tipo de cuenta ingresada.
@@ -166,11 +180,18 @@ public class Client extends User implements Printable{
 		System.out.println("Rut: " + getRut());
 		
 		if(this.rutAccount != null) {
+			System.out.println("Cuenta rut:\n");
 			rutAccount.showInfo();
+		}
+		else {
+			System.out.println("No posee la cuenta rut activa");
 		}
 		
 		if(this.savingAccount != null) {
 			savingAccount.showInfo();
+		}
+		else {
+			System.out.println("No posee la cuenta de ahorros activa");
 		}
 	}
 }

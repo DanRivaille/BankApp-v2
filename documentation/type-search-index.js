@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"model","l":"Account"},{"p":"model","l":"Addressee"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"model","l":"Bank"},{"p":"model","l":"Client"},{"p":"model","l":"CurrentAccount"},{"p":"model","l":"Printable"},{"p":"model","l":"SavingAccount"},{"p":"model","l":"Transaction"},{"p":"model","l":"TypeAccount"}]

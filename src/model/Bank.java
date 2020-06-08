@@ -24,7 +24,7 @@ public class Bank {
 	
 	/**
 	 * Constructor que establece el cliente e instancia los demas atributos objeto.
-	 * @param cliente cliente inicial.
+	 * @param client cliente inicial.
 	 * */
 	public Bank(Client client) {
 		this.accounts = new HashMap<String, Account>();
@@ -65,7 +65,7 @@ public class Bank {
 	
 	/**
 	 * Comprueba que exista una cuenta guardada asociada al numero de cuenta ingresado.
-	 * @return true si esta guardada la cuenta, false en caso contrario.
+	 * @param accountNumber numero de la cuenta a eliminar.
 	 * */
 	public void removeAccount(String accountNumber) {
 		if(this.accounts.containsKey(accountNumber)) {
@@ -132,7 +132,7 @@ public class Bank {
 	
 	/**
 	 * Establece un nuevo cliente.
-	 * @param newCliente nuevo cliente.
+	 * @param newClient nuevo cliente.
 	 * */
 	public void setClient(Client newClient) {
 		this.client = newClient;

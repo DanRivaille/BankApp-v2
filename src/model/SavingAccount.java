@@ -67,7 +67,7 @@ public class SavingAccount extends Account{
 	 * Resta la cantidad "amount" del saldo mas el porcentaje de rentabilidad como penalizacion por
 	 * retirar dinero de la cuenta, guardando la cuenta destino "accountNumber"
 	 * @param amount cantidad a transferir
-	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
+	 * @param asociatedAccount numero de cuenta a la que se realiza la transferencia
 	 * */
 	public void transferTo(int amount, Account asociatedAccount) {
 		super.transferTo(amount * (int) (1 + this.profitabilityPercentage), asociatedAccount);

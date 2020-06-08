@@ -29,7 +29,7 @@ public class Transaction {
 	/**
 	 * Constructor, establece el monto, la fecha actual y guarda el numero de la cuenta asociada
 	 * @param amount monto asociado a la transaccion
-	 * @param accountNumber numero de la cuenta asociada a la transaccion
+	 * @param asociatedAccount numero de la cuenta asociada a la transaccion
 	 * */
 	public Transaction(int amount, Account asociatedAccount) {
 		setAmount(amount);
@@ -66,7 +66,7 @@ public class Transaction {
 	}
 	
 	/**
-	 * @param newAccountNumber establece un nuevo numero de cuenta para la cuenta asociada
+	 * @param newAsociatedAccount establece un nuevo numero de cuenta para la cuenta asociada
 	 * */
 	public void setAccount(Account newAsociatedAccount) {
 		this.asociatedAccount.setAccount(newAsociatedAccount);

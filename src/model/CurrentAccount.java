@@ -45,7 +45,7 @@ public class CurrentAccount extends Account {
 	 * Resta la cantidad "amount" del saldo mas un 5% del costo de mantencion total que se cobra como costo por
 	 * administracion de la cuenta, guardando la cuenta destino "accountNumber"
 	 * @param amount cantidad a transferir
-	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
+	 * @param asociatedAccount numero de cuenta a la que se realiza la transferencia
 	 * */
 	public void transferTo(int amount, Account asociatedAccount) {
 		super.transferTo(amount + (int) (0.05f * this.maintenanceCost), asociatedAccount);
@@ -53,7 +53,7 @@ public class CurrentAccount extends Account {
 	
 	/**
 	 * Establece el nuevo costo de mantencion de la cuenta.
-	 * @param maintenance nuevo costo de mantencion de la cuenta.
+	 * @param maintenanceCost nuevo costo de mantencion de la cuenta.
 	 * */
 	public void setMaintenanceCost(int maintenanceCost) {
 		this.maintenanceCost = maintenanceCost;

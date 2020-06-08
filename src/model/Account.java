@@ -52,7 +52,7 @@ public abstract class Account implements Printable{
 	/**
 	 * Suma la cantidad "amount" al saldo, guardando la cuenta de origen: "accountNumber"
 	 * @param amount cantidad a depositar
-	 * @param accountNumber numero de cuenta que realizo el deposito 
+	 * @param asociatedAccount numero de cuenta que realizo el deposito 
 	 * */
 	public void depositFrom(int amount, Account asociatedAccount) {
 		setBalance(amount + getBalance());
@@ -62,7 +62,7 @@ public abstract class Account implements Printable{
 	/**
 	 * Resta la cantidad "amount" del saldo, guardando la cuenta destino "accountNumber"
 	 * @param amount cantidad a transferir
-	 * @param accountNumber numero de cuenta a la que se realiza la transferencia
+	 * @param asociatedAccount numero de cuenta a la que se realiza la transferencia
 	 * */
 	public void transferTo(int amount, Account asociatedAccount) {
 		setBalance(getBalance() - amount);
@@ -72,7 +72,7 @@ public abstract class Account implements Printable{
 	/**
 	 * Añade una nueva transaccion al historial de movimientos, si alcanzo el maximo se elimina la mas antigua
 	 * @param amount monto relacionado con la transaccion
-	 * @param accountNumber asociada a la transaccion
+	 * @param asociatedAccount asociada a la transaccion
 	 * */
 	public void addTransaction(int amount, Account asociatedAccount) {
 		if(this.history.size() >= 20)

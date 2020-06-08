@@ -22,7 +22,7 @@ public class Addressee {
 	
 	/**
 	 * Constructor que solo establece el numero de cuenta del destinatario
-	 * @param accountNumber numero de cuenta inicial del destinatario 
+	 * @param asociatedAccount numero de cuenta inicial del destinatario 
 	 * */
 	public Addressee(Account asociatedAccount) {
 		this.asociatedAccount = asociatedAccount;
@@ -32,7 +32,7 @@ public class Addressee {
 	
 	/**
 	 * Constructor que establece todos los atributos de la clase con los parametros ingresados
-	 * @param accountNumber numero de cuenta del destinatario, se asume que ha sido validado
+	 * @param asociatedAccount numero de cuenta del destinatario, se asume que ha sido validado
 	 * @param name nombre del destinatario
 	 * @param isFavorite indica si el destinatario esta guardado como favorito o no
 	 * */
@@ -64,7 +64,7 @@ public class Addressee {
 	}
 	
 	/**
-	 * @param newAccountNumber establece un nuevo numero de cuenta
+	 * @param newAsociatedAccount establece un nuevo numero de cuenta
 	 * */
 	public void setAccount(Account newAsociatedAccount) {
 		this.asociatedAccount = newAsociatedAccount;

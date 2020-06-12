@@ -106,7 +106,14 @@ public class ControllerTUI {
 			this.viewTUI.setOutput("Ya existe una cuenta con el numero de cuenta ingresado.\n");
 		}
 		else {
-			this.bank.addAccount(accountNumber);
+			Account newAccount;
+					
+			if(Account.getTypeAccount(accountNumber) == TypeAccount.RUT_ACCOUNT)
+				newAccount = new CurrentAccount(accountNumber);
+			else
+				newAccount = new SavingAccount(accountNumber);
+			
+			this.bank.addAccount(newAccount);
 			this.viewTUI.setOutput("Cuenta con numero (" + accountNumber + ") agregador correctamente.\n");
 		}
 	}

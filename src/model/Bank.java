@@ -32,29 +32,6 @@ public class Bank {
 	}
 	
 	/**
-	 * Agrega una nueva cuenta al mapa de cuentas, crea la cuenta con el saldo en 0.
-	 * @param accountNumber numero  de la nueva cuenta a ingresar.
-	 * */
-	public void addAccount(String accountNumber) {
-		addAccount(0, accountNumber, Account.getTypeAccount(accountNumber));
-	}
-	
-	/**
-	 * Agrega una nueva cuenta al mapa de cuentas, crea la cuenta inicializada con el saldo
-	 * ingresado.
-	 * @param balance saldo inicial de la nueva cuenta a ingresar.
-	 * @param accountNumber numero de la nueva cuenta a ingresar.
-	 * */
-	public void addAccount(int balance, String accountNumber, TypeAccount typeAccount) {
-		if(!this.accounts.containsKey(accountNumber)) {
-			if(TypeAccount.RUT_ACCOUNT == typeAccount)
-				this.accounts.put(accountNumber, new CurrentAccount(balance, accountNumber));
-			else if(TypeAccount.SAVING_ACCOUNT == typeAccount)
-				this.accounts.put(accountNumber, new SavingAccount(balance, accountNumber));
-		}
-	}
-	
-	/**
 	 * Agrega la cuenta ingresada al mapa de cuentas
 	 * @param account nueva cuenta a ingresar al mapa
 	 * */

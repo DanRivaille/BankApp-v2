@@ -17,6 +17,14 @@ public class CurrentAccount extends Account {
 	public CurrentAccount() {
 		this.maintenanceCost = 5_000;
 	}
+	
+	/**
+	 * Contructor, establece el costo de mantencion de la cuenta en $5.000
+	 * */
+	public CurrentAccount(String accountNumber) {
+		super(0, accountNumber);
+		this.maintenanceCost = 5_000;
+	}
 
 	/**
 	 * Contructor, establece el costo de mantencion de la cuenta en $5.000

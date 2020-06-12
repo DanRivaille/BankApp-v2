@@ -24,6 +24,14 @@ public class SavingAccount extends Account{
 	/**
 	 * Constructor, establece el porcentaje de rentabilidad en 1%
 	 * */
+	public SavingAccount(String accountNumber) {
+		super(0, accountNumber);
+		this.profitabilityPercentage = 0.01f;
+	}
+	
+	/**
+	 * Constructor, establece el porcentaje de rentabilidad en 1%
+	 * */
 	public SavingAccount(int balance, String accountNumber) {
 		super(balance, accountNumber);
 		this.profitabilityPercentage = 0.01f;

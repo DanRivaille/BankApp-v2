@@ -23,11 +23,11 @@ public class BankApp {
 		Client client = new Client("Dan Santos", "20360262-6");
 		bank.setClient(client);
 		
-		bank.addAccount("20360262-1");
-		bank.addAccount("20360262-2");
-		bank.addAccount("00000000-1");
-		bank.addAccount("00000001-2");
-		bank.addAccount("00000002-1");
+		bank.addAccount(new CurrentAccount("20360262-1"));
+		bank.addAccount(new SavingAccount("20360262-2"));
+		bank.addAccount(new CurrentAccount("00000000-1"));
+		bank.addAccount(new SavingAccount("00000001-2"));
+		bank.addAccount(new CurrentAccount("00000002-1"));
 		
 		client.addAddressee(new Addressee(bank.getAccount("00000000-1"), "Contador", false));
 		client.addAddressee(new Addressee(bank.getAccount("00000001-2"), "Dentista", true));

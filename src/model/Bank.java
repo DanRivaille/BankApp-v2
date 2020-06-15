@@ -59,6 +59,20 @@ public class Bank {
 	}
 	
 	/**
+	 * Realiza una transaccion entra la cuenta origen hacia la cuenta destino, transfiriendo el
+	 * monto especificado, se valida que las dos cuentas esten en el sistema.
+	 * @param originAccount cuenta de origen de los fondos.
+	 * @param destinyAccount cuenta destino en la que depositaran los fondos.
+	 * @param amount monto asociado a la transaccion.
+	 * */
+	public void transactionBetweenAccounts(Account originAccount, Account destinyAccount, int amount) {
+		if(existsAccount(originAccount.getAccountNumber()) && existsAccount(destinyAccount.getAccountNumber())) {
+			originAccount.transferTo(amount, destinyAccount);
+			destinyAccount.depositFrom(amount, originAccount);
+		}
+	}
+	
+	/**
 	 * @return cuenta asociada al numero de cuenta ingreado, si no existe una cuenta con el numero de cuenta ingresado
 	 * retorna null, sino retorna la cuenta.
 	 * */

@@ -13,8 +13,8 @@ import java.time.LocalDate;
 public class Transaction {
 
 	private int amount;							//Monto asociado a la transaccion, (negativo indica un cargo, positivo un abono)
-	private LocalDate date;							//Fecha cuando se realizo la transaccion
-	private Addressee asociatedAccount;		//Cuenta asociada a la transaccion
+	private LocalDate date;						//Fecha cuando se realizo la transaccion
+	private Addressee asociatedAccount;			//Cuenta asociada a la transaccion
 	
 	/**
 	 * Constructor, inicializa el monto con la cantidad ingresada y la fecha actual

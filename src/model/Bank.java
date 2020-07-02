@@ -118,6 +118,17 @@ public class Bank {
 	}
 	
 	/**
+	 * Realizara las imposiciones de todas las cuentas en el sistema
+	 * */
+	public void makeImpositions() {
+		Iterator<String> accountNumber = this.accounts.keySet().iterator();
+		
+		while(accountNumber.hasNext()) {
+			this.accounts.get(accountNumber.next()).makeImpositions();
+		}
+	}
+	
+	/**
 	 * @return instancia del objeto cliente actual.
 	 * */
 	public Client getClient() {

@@ -88,6 +88,13 @@ public class ControllerTUI {
 			}
 		}
 	}
+	
+	/**
+	 * Realiza las imposiciones de todas las cuentas del sistema
+	 * */
+	public void makeImpositions() {
+		this.bank.makeImpositions();
+	}
 
 	/**
 	 * Agrega una nueva cuenta al sistema, valida que no exista una cuenta con el numero de cuenta ingresado.

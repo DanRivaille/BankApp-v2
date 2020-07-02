@@ -65,8 +65,11 @@ public class Bank {
 	 * @param destinyAccount cuenta destino en la que depositaran los fondos.
 	 * @param amount monto asociado a la transaccion.
 	 * */
-	public void transactionBetweenAccounts(Account originAccount, Account destinyAccount, int amount) {
-		if(existsAccount(originAccount.getAccountNumber()) && existsAccount(destinyAccount.getAccountNumber())) {
+	public void transactionBetweenAccounts(String originAccountNumber, String destinyAccountNumber, int amount) {
+		if(existsAccount(originAccountNumber) && existsAccount(destinyAccountNumber)) {
+			Account originAccount = this.accounts.get(originAccountNumber);
+			Account destinyAccount = this.accounts.get(destinyAccountNumber);
+			
 			originAccount.transferTo(amount, destinyAccount);
 			destinyAccount.depositFrom(amount, originAccount);
 		}

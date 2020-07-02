@@ -262,13 +262,25 @@ public class ControllerTUI {
 			
 			if(destinyAccount != null) {
 				this.viewTUI.setOutput("Ingrese el monto a transferir: ");
+				int amount = Integer.parseInt(this.viewTUI.getInput());
 				
-				
-				this.viewTUI.setOutput("Cuenta origen: \n\n");
-				originAccount.showInfo();
-				
-				this.viewTUI.setOutput("\n\nCuenta destino: \n\n");
-				destinyAccount.showInfo();
+				if(amount < 100) {
+					this.viewTUI.setOutput("Monto ingresado no valido (tiene que ser mayor a 100)\n");
+				} else if (amount > originAccount.getBalance()) {
+					this.viewTUI.setOutput("Monto ingresado excede el saldo contable actual de la cuenta\n");
+				} else {
+					this.viewTUI.setOutput("Cuenta origen: \n\n");
+					originAccount.showInfo();
+					
+					this.viewTUI.setOutput("\n\nCuenta destino: \n\n");
+					destinyAccount.showInfo();
+					
+					this.viewTUI.setOutput("Monto transferido: " + amount + "\n");
+					
+					this.bank.transactionBetweenAccounts(originAccount.getAccountNumber(), destinyAccount.getAccountNumber(), amount);
+					
+					this.viewTUI.setOutput("Transaccion realizada correctamente\n");
+				}
 			}
 		}
 	}

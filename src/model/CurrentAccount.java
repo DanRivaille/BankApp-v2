@@ -57,7 +57,7 @@ public class CurrentAccount extends Account {
 	 * @param amount cantidad a transferir
 	 * @param asociatedAccount numero de cuenta a la que se realiza la transferencia
 	 * */
-	public void transferTo(int amount, Account asociatedAccount) {
+	public void transferTo(int amount, Account asociatedAccount) throws ExcessiveTransactionAmount{
 		super.transferTo(amount + (int) (0.05f * this.maintenanceCost), asociatedAccount);
 	}
 	

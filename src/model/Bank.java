@@ -2,6 +2,7 @@ package model;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Iterator;
+import exceptions.*;
 
 /**
  * Clase principal de la aplicacion
@@ -65,7 +66,7 @@ public class Bank {
 	 * @param destinyAccount cuenta destino en la que depositaran los fondos.
 	 * @param amount monto asociado a la transaccion.
 	 * */
-	public void transactionBetweenAccounts(String originAccountNumber, String destinyAccountNumber, int amount) {
+	public void transactionBetweenAccounts(String originAccountNumber, String destinyAccountNumber, int amount) throws ExcessiveTransactionAmount{
 		if(existsAccount(originAccountNumber) && existsAccount(destinyAccountNumber)) {
 			Account originAccount = this.accounts.get(originAccountNumber);
 			Account destinyAccount = this.accounts.get(destinyAccountNumber);

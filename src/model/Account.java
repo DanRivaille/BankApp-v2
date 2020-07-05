@@ -73,7 +73,10 @@ public abstract class Account implements Printable{
 	 * @param amount cantidad a transferir
 	 * @param asociatedAccount numero de cuenta a la que se realiza la transferencia
 	 * */
-	public void transferTo(int amount, Account asociatedAccount) {
+	public void transferTo(int amount, Account asociatedAccount) throws ExcessiveTransactionAmount{
+		if(amount > getBalance())
+			throw new ExcessiveTransactionAmount();
+		
 		setBalance(getBalance() - amount);
 		addTransaction(-amount, asociatedAccount);
 	}

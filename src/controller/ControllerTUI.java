@@ -289,7 +289,11 @@ public class ControllerTUI {
 					
 					this.viewTUI.setOutput("Monto transferido: " + amount + "\n");
 					
-					this.bank.transactionBetweenAccounts(originAccount.getAccountNumber(), destinyAccount.getAccountNumber(), amount);
+					try {
+						this.bank.transactionBetweenAccounts(originAccount.getAccountNumber(), destinyAccount.getAccountNumber(), amount);
+					} catch (ExcessiveTransactionAmount e) {
+						this.viewTUI.setOutput("El monto ingresado excede el saldo contable actual de la cuenta\n");
+					}
 					
 					this.viewTUI.setOutput("Transaccion realizada correctamente\n");
 				}

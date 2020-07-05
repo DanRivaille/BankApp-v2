@@ -2,6 +2,7 @@ package controller;
 import view.*;
 import model.*;
 import java.util.ArrayList;
+import exceptions.*;
 
 /**
  * Clase correspondiente al controlador del patron MVC
@@ -115,13 +116,17 @@ public class ControllerTUI {
 		else {
 			Account newAccount;
 					
-			if(Account.getTypeAccount(accountNumber) == TypeAccount.RUT_ACCOUNT)
-				newAccount = new CurrentAccount(accountNumber);
-			else
-				newAccount = new SavingAccount(accountNumber);
-			
-			this.bank.addAccount(newAccount);
-			this.viewTUI.setOutput("Cuenta con numero (" + accountNumber + ") agregador correctamente.\n");
+			try {
+				if(Account.getTypeAccount(accountNumber) == TypeAccount.RUT_ACCOUNT)
+					newAccount = new CurrentAccount(accountNumber);
+				else
+					newAccount = new SavingAccount(accountNumber);
+				
+				this.bank.addAccount(newAccount);
+				this.viewTUI.setOutput("Cuenta con numero (" + accountNumber + ") agregador correctamente.\n");
+			} catch (WrongAccountNumber e) {
+				this.viewTUI.setOutput("Numero de cuenta ingresado no valido\n");
+			}
 		}
 	}
 	

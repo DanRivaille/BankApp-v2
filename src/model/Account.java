@@ -1,4 +1,5 @@
 package model;
+import exceptions.*;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -20,14 +21,19 @@ public abstract class Account implements Printable{
 	* Contructor por defecto, inicializa el saldo en 0 y el numero de cuenta en "00000000-0"
 	*/
 	public Account() {
-		this("00000000-0");			//llama al constructor da abajo con un numero de cuenta por defecto
+		this.balance = 0;
+		this.accountNumber = "00000000-0";
+		this.history = new LinkedList<Transaction>();
 	}
 
 	/**
 	* Constructor, establece el numero de cuenta de la nueva cuenta, el saldo lo inicializa en 0
 	* @param newAccountNumber numero de cuenta, se asume que se haya validado
 	*/
-	public Account(String newAccountNumber) {
+	public Account(String newAccountNumber) throws WrongAccountNumber{
+		if(!isValid(newAccountNumber))
+			throw new WrongAccountNumber();
+		
 		this.balance = 0;
 		this.accountNumber = newAccountNumber;
 		this.history = new LinkedList<Transaction>();
@@ -38,7 +44,10 @@ public abstract class Account implements Printable{
 	* @param initialBalance saldo inicial que tendra la cuenta
 	* @param newAccountNumber numero de cuenta, se asume que se haya validado
 	*/
-	public Account(int initialBalance, String newAccountNumber) {
+	public Account(int initialBalance, String newAccountNumber) throws WrongAccountNumber{
+		if(!isValid(newAccountNumber))
+			throw new WrongAccountNumber();
+		
 		setBalance(initialBalance);
 		this.accountNumber = newAccountNumber;
 		this.history = new LinkedList<Transaction>();

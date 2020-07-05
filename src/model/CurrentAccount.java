@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.*;
+
 /**
  * Clase que modela una cuenta corriente, hereda de la clase abstracta Account, 
  * e implementa el metodo makeImpositions de la forma en que lo realiza un cuenta corriente,
@@ -21,7 +23,7 @@ public class CurrentAccount extends Account {
 	/**
 	 * Contructor, establece el costo de mantencion de la cuenta en $5.000
 	 * */
-	public CurrentAccount(String accountNumber) {
+	public CurrentAccount(String accountNumber) throws WrongAccountNumber {
 		super(0, accountNumber);
 		this.maintenanceCost = 5_000;
 	}
@@ -29,7 +31,7 @@ public class CurrentAccount extends Account {
 	/**
 	 * Contructor, establece el costo de mantencion de la cuenta en $5.000
 	 * */
-	public CurrentAccount(int balance, String accountNumber) {
+	public CurrentAccount(int balance, String accountNumber) throws WrongAccountNumber {
 		super(balance, accountNumber);
 		this.maintenanceCost = 5_000;
 	}
@@ -37,7 +39,7 @@ public class CurrentAccount extends Account {
 	/**
 	 * Constructor, establece el costo de mantencion ingresado.
 	 * */
-	public CurrentAccount(int balance, String accountNumber, int maintenanceCost) {
+	public CurrentAccount(int balance, String accountNumber, int maintenanceCost) throws WrongAccountNumber {
 		super(balance, accountNumber);
 		this.maintenanceCost = maintenanceCost;
 	}

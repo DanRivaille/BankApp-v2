@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.*;
 import java.util.ListIterator;
 import java.time.LocalDate;
 
@@ -24,7 +25,7 @@ public class SavingAccount extends Account{
 	/**
 	 * Constructor, establece el porcentaje de rentabilidad en 1%
 	 * */
-	public SavingAccount(String accountNumber) {
+	public SavingAccount(String accountNumber) throws WrongAccountNumber {
 		super(0, accountNumber);
 		this.profitabilityPercentage = 0.01f;
 	}
@@ -32,7 +33,7 @@ public class SavingAccount extends Account{
 	/**
 	 * Constructor, establece el porcentaje de rentabilidad en 1%
 	 * */
-	public SavingAccount(int balance, String accountNumber) {
+	public SavingAccount(int balance, String accountNumber) throws WrongAccountNumber {
 		super(balance, accountNumber);
 		this.profitabilityPercentage = 0.01f;
 	}
@@ -40,7 +41,7 @@ public class SavingAccount extends Account{
 	/**
 	 * Constructor, establace los atributos de la clase.
 	 * */
-	public SavingAccount(int balance, String accountNumber, double profitabilityPercentage) {
+	public SavingAccount(int balance, String accountNumber, double profitabilityPercentage) throws WrongAccountNumber {
 		super(balance, accountNumber);
 		this.profitabilityPercentage = profitabilityPercentage;
 	}

@@ -77,7 +77,8 @@ public class ViewTUI {
 			System.out.println("2 - Buscar Cuenta por rango de saldo");
 			System.out.println("3 - Agregar Cuenta");
 			System.out.println("4 - Eliminar Cuenta");
-			System.out.println("5 - Salir");
+			System.out.println("5 - Realizar Imposiciones");
+			System.out.println("6 - Salir");
 			System.out.print("\nIngrese una opcion: ");
 
 			option = readOption();
@@ -85,13 +86,14 @@ public class ViewTUI {
 			switch(option) {
 				case 1  : this.controllerTUI.searchNumberAccount();	pause();	break;
 				case 2  : this.controllerTUI.searchRankAccount();	pause();	break;
-				case 3  : this.controllerTUI.addAccount();		pause();	break;
-				case 4  : this.controllerTUI.removeAccount();	pause();	break;
-				case 5  : break;
+				case 3  : this.controllerTUI.addAccount();		pause();		break;
+				case 4  : this.controllerTUI.removeAccount();	pause();		break;
+				case 5  : this.controllerTUI.makeImpositions(); pause();		break;
+				case 6  : 														break;
 				default : System.out.println("Opcion no valida, intentelo nuevamente"); pause();
 			}
 
-		}while(option != 5);
+		}while(option != 6);
 	}
 	
 	/**

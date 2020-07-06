@@ -179,7 +179,10 @@ public abstract class Account implements Printable{
 	 * Establece el numero de cuenta, asume que sea valido
 	 * @param newAccountNumber nuevo numero de cuenta.
 	 * */
-	public void setAccountNumber(String newAccountNumber) {
+	public void setAccountNumber(String newAccountNumber) throws WrongAccountNumber{
+		if(!isValid(newAccountNumber))
+			throw new WrongAccountNumber();
+		
 		this.accountNumber = newAccountNumber;
 	}
 

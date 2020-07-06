@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 /**
- * Clase que modela una cuenta bancaria, guarda el saldo de la cuenta su numero de cuenta y el tipo de cuenta que es
- * (cuenta rut o cuenta de ahorros).
+ * Clase que modela las funciones basicas de una cuenta bancaria generica, guardando el saldo de la cuenta,
+ * su numero de cuenta y el historial de transacciones de la misma.
  * 
  * @author DanSantos
  * @version 29-03-2020
